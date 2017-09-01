@@ -5,7 +5,10 @@ export const API_URL = '/api/recipes';
 // return the response body for each request
 // or throw an error
 const wrapper = cmd => cmd
-  .then(res => res.body,
+  .then(res => {
+    console.log('API response', res.body);
+    return res.body;
+  },
     ({ response }) => {
       throw response.body.error;
     }

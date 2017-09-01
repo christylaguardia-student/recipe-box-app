@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
 import SidebarContainer from './containers/SidebarContainer';
 import RecipeContainer from './containers/RecipeContainer';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
+      <div>
         <SidebarContainer />
         <RecipeContainer />
       </div>

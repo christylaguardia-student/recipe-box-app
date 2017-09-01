@@ -1,0 +1,15 @@
+@import '_colors.scss';
+
+:local(.sidebar) {
+
+  // div {
+  //   width: '40%';
+  //   background-color: $background;
+  // }
+
+  ul {
+    list-style: none;
+    background-color: $background;
+  }
+
+}

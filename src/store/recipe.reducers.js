@@ -1,5 +1,7 @@
 import * as actions from './recipe.constants';
 
+// loading?
+
 // should I have a default ObjectID?
 // or placeholder data in case the db is empty?
 const defaultRecipe = {

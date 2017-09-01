@@ -20,7 +20,7 @@ export default class Recipe extends Component {
           })}
         </ul>
         
-        <button>Edit</button>
+        <button onClick={() => {alert("this does nothing")} } >Edit</button>
       </div>
     );
   }
