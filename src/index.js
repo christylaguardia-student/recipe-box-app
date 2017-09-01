@@ -5,10 +5,10 @@ import { createStore } from 'redux';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import recipeReducer from './components/recipe/recipe.reducer';
+import recipeReducers from './components/recipe/reducers';
 
 const store = createStore(
-  recipeReducer,
+  recipeReducers,
   window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

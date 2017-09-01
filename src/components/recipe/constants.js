@@ -1,0 +1,4 @@
+export const RECIPE_FETCH = 'RECIPE_FETCH';
+export const RECIPE_CREATE = 'RECIPE_CREATE';
+export const RECIPE_UPDATE = 'RECIPE_UPDATE';
+export const RECIPE_DESTROY = 'RECIPE_DESTROY';
