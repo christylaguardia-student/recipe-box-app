@@ -5,7 +5,7 @@ import { createStore } from 'redux';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import recipeReducers from './components/recipe/reducers';
+import recipeReducers from './store/recipe.reducers';
 
 const store = createStore(
   recipeReducers,

@@ -1,5 +1,5 @@
-import * as actions from './constants';
-import { request } from '../../services/recipe-box.api';
+import * as actions from './recipe.constants';
+import { request } from '../services/recipe-box.api';
 
 export function fetchRecipe(id) {
   return function() {

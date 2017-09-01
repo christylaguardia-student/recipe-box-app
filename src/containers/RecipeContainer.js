@@ -1,17 +1,8 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Recipe from '../components/recipe/Recipe';
+import Recipe from '../components/Recipe';
 
 const mapStateToProps = (state) => {
-
-  return {
-    recipe: state.recipe,
-    // id: state.id,
-    // title: state.title,
-    // instructions: state.instructions,
-    // ingredients: state.ingredients,
-  };
-
+  return { recipe: state.recipe };
 }
 
 export default connect(mapStateToProps)(Recipe);

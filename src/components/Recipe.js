@@ -16,7 +16,7 @@ export default class Recipe extends Component {
         <h2>Ingredients</h2>
         <ul>
           {recipe.ingredients.map(item => {
-            return <li>{item.amount} {item.unit} {item.name}</li>
+            return <li key={item._id}>{item.amount} {item.unit} {item.name}</li>
           })}
         </ul>
         
