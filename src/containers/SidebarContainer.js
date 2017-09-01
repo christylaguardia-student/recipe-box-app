@@ -1,8 +1,15 @@
 import { connect } from 'react-redux';
 import Sidebar from '../components/Sidebar';
+import { fetchAllRecipes } from '../store/recipe.actions';
 
-const mapStateToProps = (state) => {
-  return { recipes: state.recipes };
+const mapStateToProps = state => {
+  return { recipesList: state.recipesList };
+};
+
+function mapDispatchToProps(dispatch) {
+  dispatch(fetchAllRecipes());
 }
 
-export default connect(mapStateToProps)(Sidebar);
+const SidebarContainer = connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+
+export default SidebarContainer;

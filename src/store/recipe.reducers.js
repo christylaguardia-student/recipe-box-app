@@ -1,36 +1,26 @@
-import * as actions from './recipe.constants';
+import {
+  RECIPE_FETCH_ALL,
+  RECIPE_FETCH,
+} from './recipe.constants';
 
-// loading?
+export default function recipe(state = { recipe: null, recipesList: []}, { type, payload }) {
 
-// should I have a default ObjectID?
-// or placeholder data in case the db is empty?
-const defaultRecipe = {
-  _id: 1,
-  title: 'Peanut Butter and Jelly Sandwich',
-  instructions: 'Spread peanut butter on one slice of bread, and jelly on the other',
-  ingredients: [
-    { _id: 1, name: 'Bread', amount: 2 },
-    { _id: 2, name: 'Peanut Butter', amount: 2, unit: 'tbsp' },
-    { _id: 3, name: 'Jelly', amount: 2, unit: 'tbsp' }
-  ]
-};
+  console.log('Payload', payload);
 
-const tempRecipeList = [
-  { _id: 1, title: 'Peanut Butter Sandwich' },
-  { _id: 2, title: 'Peanut Butter and Jelly Sandwich' },
-  { _id: 3, title: 'Butter Sandwich' }
-]
+  switch(type) {
+    case RECIPE_FETCH_ALL:
+      return { recipe: payload[0], recipesList: payload }; // not sure if index=0 will work?
+    
+      case RECIPE_FETCH:
+      return { recipe: payload, recipesList: state.recipesList }
 
-export default function recipe(state = { recipe: defaultRecipe, recipes: tempRecipeList }, action) {
-  switch(action.type) {
-    case actions.RECIPE_FETCH:
-      return action.payload;
-    case actions.RECIPE_CREATE:
-      return action.payload;
-    case actions.RECIPE_UPDATE:
-      return action.payload
-    case actions.RECIPE_DESTROY:
-      return action.payload
+    // case RECIPE_CREATE:
+    //   return payload;
+    // case RECIPE_UPDATE:
+    //   return payload
+    // case RECIPE_DESTROY:
+    //   return payload
+
     default:
       return state;
   }

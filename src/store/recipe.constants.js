@@ -1,3 +1,4 @@
+export const RECIPE_FETCH_ALL = 'RECIPE_FETCH_ALL';
 export const RECIPE_FETCH = 'RECIPE_FETCH';
 export const RECIPE_CREATE = 'RECIPE_CREATE';
 export const RECIPE_UPDATE = 'RECIPE_UPDATE';
