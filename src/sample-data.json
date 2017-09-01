@@ -1,20 +1,20 @@
 [
   {
-    "title" : "Cookies",
-    "instructions" : "Mix stuff and put on cookie sheet. Then put in oven. Do not burn.",
-    "ingredients" : [ 
-      { "name" : "flour", "amount" : 2, "unit" : "cup" },
-      { "name" : "sugar", "amount" : 1, "unit" : "cup" },
-      { "name" : "chocolate chips", "amount" : 2.5, "unit" : "cup" }
+    "title": "Cookies",
+    "instructions": "Mix stuff and put on cookie sheet. Then put in oven. Do not burn.",
+    "ingredients": [ 
+      { "name": "flour", "amount": 2, "unit": "cup" },
+      { "name": "sugar", "amount": 1, "unit": "cup" },
+      { "name": "chocolate chips", "amount": 2.5, "unit": "cup" }
     ]
   },{
-    "title" : "Cookies with nuts",
-    "instructions" : "Mix stuff and put on cookie sheet. Then put in oven. Do not burn.",
-    "ingredients" : [ 
-      { "name" : "flour", "amount" : 2.0, "unit" : "cup" },
-      { "name" : "sugar", "amount" : 1.0, "unit" : "cup" },
-      { "name" : "chocolate chips", "amount" : 2.5, "unit" : "cup" },
-      { "name" : "walnuts", "amount" : 0.25, "unit" : "cup" }
+    "title": "Cookies with nuts",
+    "instructions": "Mix stuff and put on cookie sheet. Then put in oven. Do not burn.",
+    "ingredients": [ 
+      { "name": "flour", "amount": 2.0, "unit": "cup" },
+      { "name": "sugar", "amount": 1.0, "unit": "cup" },
+      { "name": "chocolate chips", "amount": 2.5, "unit": "cup" },
+      { "name": "walnuts", "amount": 0.25, "unit": "cup" }
     ]
   },{
     "title": "Peanut Butter and Jelly Sandwich",
