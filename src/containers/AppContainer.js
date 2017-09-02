@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
 import '../styles/App.css';
-
 import SidebarContainer from './SidebarContainer';
 // import RecipeContainer from './RecipeContainer';
 import Home from '../components/Home';
 
 class App extends Component {
+
   render() {
     return (
       <div>

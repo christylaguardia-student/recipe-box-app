@@ -1,18 +1,16 @@
-import {
-  RECIPE_FETCH_ALL,
-  RECIPE_FETCH,
-} from './recipe.constants';
+import { RECIPE_FETCH_ALL, RECIPES_RECEIVE_ALL, RECIPE_FETCH } from './recipe.constants';
 
 export default function recipe(state = { recipe: null, recipesList: []}, { type, payload }) {
 
   console.log('Payload', payload);
 
   switch(type) {
-    case RECIPE_FETCH_ALL:
+    case RECIPES_RECEIVE_ALL:
       return { recipe: payload[0], recipesList: payload }; // not sure if index=0 will work?
     
-      case RECIPE_FETCH:
+    case RECIPE_FETCH:
       return { recipe: payload, recipesList: state.recipesList }
+    
 
     // case RECIPE_CREATE:
     //   return payload;
