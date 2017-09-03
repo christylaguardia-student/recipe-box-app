@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 import '../styles/App.css';
-import SidebarContainer from './SidebarContainer';
-import RecipeContainer from './RecipeContainer';
 import Home from '../components/Home';
-import CreateForm from '../components/CreateForm';
+import CreateContainer from './CreateContainer';
+import RecipeContainer from './RecipeContainer';
 
 class App extends Component {
 
@@ -12,15 +11,16 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <h1>Recipe Box</h1>
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/new">Add New</Link></li>
+            <li><Link to="/recipes">Recipes</Link></li>
           </ul>
-          <SidebarContainer />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/new" component={CreateForm} />
-            <Route path="/recipes?=id" component={RecipeContainer} />
+            <Route path="/new" component={CreateContainer} />
+            <Route path="/recipes" component={RecipeContainer} />
           </Switch>
         </div>
       </Router>

@@ -22,12 +22,12 @@ export const request = {
     return wrapper(superagent.get(`${API_URL}/${id}`));
   },
   add(data) {
-    return wrapper(superagent.post(API_URL)).send(data);
+    return wrapper(superagent.post(API_URL).send(data));
   },
   delete(id) {
     return wrapper(superagent.delete(`${API_URL}/${id}`));
   },
   update(id, data) {
-    return wrapper(superagent.patch(`${API_URL}/${id}`)).send(data);
+    return wrapper(superagent.patch(`${API_URL}/${id}`).send(data));
   }
 };

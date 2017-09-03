@@ -3,8 +3,11 @@ import React from 'react';
 export default function Home() {
   return (
     <div>
-      <h1>Welcome!</h1>
-      <p>Pick a recipe to view</p>
+      <h2>Welcome to Recipe Box!</h2>
+      <label>
+        Search
+        <input type="text" />
+      </label>
     </div>
   )
 }
