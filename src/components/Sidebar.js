@@ -14,11 +14,11 @@ export default class SideBar extends Component {
   }
 
   componentDidMount() {
-    request.getAll()
-      .then(res => {
-        console.log(res);
-        this.setState({ sidebarRecipeList: res });
-      });
+    return request.getAll()
+      .then(recipes => {
+        this.setState({ sidebarRecipeList: recipes });
+      })
+      .catch(error => console.log('uh-oh! there was an error getting all the recipes.'));
   }
 
   render() {
@@ -27,10 +27,11 @@ export default class SideBar extends Component {
       <Router>
         <div>
           <h1>Recipes</h1>
-          <button onClick={() => {alert("this does nothing")} }>New</button>
+          {/* <button onClick={() => {alert("this does nothing")} }>New</button> */}
+          
           <ul>
             {this.state.sidebarRecipeList.map(item => {
-              return <li key={item._id}><Link to={`/recipe/${item._id}`}>{item.title}</Link></li>
+              return <li key={item._id}><Link to={`/recipes?id=${item._id}`}>{item.title}</Link></li>
             })}
           </ul>
         </div>
