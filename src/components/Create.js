@@ -27,13 +27,9 @@ export default class CreateForm extends Component {
       whole: null,
       fraction: '',
       unit: '',
-      ingredients: [],
-      // [
-      //   { name: 'sugar', amount: 1, unit: 'cup' },
-      //   { name: 'flour', amount: 1.5, unit: 'cup' },
-      // ],
-      recipeComplete: false,
-      recipeSaved: false
+      ingredients: []
+      // recipeComplete: false,
+      // recipeSaved: false
     }
 
     this.addIngredient = this.addIngredient.bind(this);
@@ -41,11 +37,10 @@ export default class CreateForm extends Component {
   }
 
   addIngredient(name, whole, fraction, unit) {
-    let amount = `${whole} ${fraction}`;
+    const amount = `${whole} ${fraction}`;
     const newIngredient = {name, amount, unit};
   
-    if ( newIngredient.name && newIngredient.amount) {
-      
+    if (newIngredient.name && newIngredient.amount) {
       return (
         this.setState({
           ingredients: [
@@ -67,12 +62,8 @@ export default class CreateForm extends Component {
 
       if (amountNum.includes(' ')) {
         const amountStrings = item.amount.split(' ');
-        console.log('amountStrings', amountStrings);
         const fraction = fractions.find(f => f.value === amountStrings[1]);
-        console.log('fraction', fraction);
-
         amountNum = parseInt(amountStrings[0], 10) + fraction.decimal;
-        console.log('amountNum', amountNum);
       } else {
         amountNum = parseInt(amountNum, 10);
       }
@@ -90,18 +81,11 @@ export default class CreateForm extends Component {
     };
 
     // check if required fields are populated
-    if (recipe.title === null || recipe.title === '' || recipe.ingredients.length === 0 ) {
-      this.setState({ recipeComplete: false, recipeSaved: false });
-    } else {
-      // save the recipe
+    if (recipe.title !== null || recipe.title !== '' || recipe.ingredients.length > 0 ) {
       request.add(recipe)
-        .then(saved => {
-          this.setState({ recipeComplete: true, recipeSaved: true }); 
-          console.log('this.state.recipesList', this.state.recipesList);
-          this.setState({ recipesList: [...this.state.recipesList, recipe] });
-        });
-        // QUESTION: how to handle an error
-    }
+        .then(saved => console.log('recipe saved', saved))
+        .catch(() => console.log('uh-oh, there was an error during the save'));
+    } else alert('Can not save recipe');
   }
 
   render () {
@@ -151,7 +135,7 @@ export default class CreateForm extends Component {
               })}
 
               <tr>
-                <td><input name="name" type="text" placeholder="flour" onChange={({target}) => this.setState({ name: target.value })} /></td>
+                <td><input name="name" type="text" placeholder="example: flour" onChange={({target}) => this.setState({ name: target.value })} /></td>
                 <td>
                   <input name="whole" type="number" step="1" min="0" placeholder="1" onChange={({target}) => this.setState({ whole: target.value })} />
                   
@@ -179,5 +163,5 @@ export default class CreateForm extends Component {
     );
   }
 
-  
 }
+  

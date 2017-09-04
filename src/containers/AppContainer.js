@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import '../styles/App.css';
 import Home from '../components/Home';
-import CreateContainer from './CreateContainer';
+import Create from '../components/Create';
 import RecipeContainer from './RecipeContainer';
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
           </ul>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/new" component={CreateContainer} />
+            <Route path="/new" component={Create} />
             <Route path="/recipes" component={RecipeContainer} />
           </Switch>
         </div>

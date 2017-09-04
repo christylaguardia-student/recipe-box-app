@@ -1,19 +1,18 @@
 import React from 'react';
+import { request } from '../services/recipe-box.api';
 
-export default function recipeDetails({ recipe }) {
-  let convertedTime;
-  const hours = Math.floor(recipe.time / 60);
-  const minutes = recipe.time % 60;
+export default function Details({ recipe }) {
 
-  if ((recipe.time / 60) > 1) convertedTime = `${hours} hours and ${minutes} minutes`;
-  else convertedTime = `${minutes} minutes`;
-  
   return (
     <div>
+      <p>detail view</p>
       <h2>{recipe.title}</h2>
 
       <p>Serves: {recipe.servings}</p>
-      <p>Time: {convertedTime}</p>
+      <p>Time: {convertTime(recipe.time)}</p>
+      
+      <button onClick={() => {alert("this does nothing")} }> - </button>
+      <button onClick={() => {alert("this does nothing")} }> + </button>
 
       <h3>Ingredients</h3>
       <ul>
@@ -21,11 +20,36 @@ export default function recipeDetails({ recipe }) {
           return <li key={item._id}>{item.amount} {item.unit} {item.name}</li>
         })}
       </ul>
-      
+
       <h3>Instructions</h3>
       <p>{recipe.instructions}</p>
       
       <button onClick={() => {alert("this does nothing")} }>Edit</button>
     </div>
   )
+
+}
+
+function convertTime(time) {
+  const hours = Math.floor(time / 60);
+  const minutes = time % 60;
+
+  if ((time / 60) > 1) return `${hours} hours and ${minutes} minutes`;
+  else return `${minutes} minutes`;
+}
+
+function scale(ingredients, factor) {
+
+  return ingredients.map(item => {
+    const newAmount = item.amount * factor;
+
+    return {
+      _id: item._id,
+      name: item.name,
+      amount: newAmount,
+      unit: item.unit
+    };
+
+  });
+
 }

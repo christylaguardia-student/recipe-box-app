@@ -1,1 +1,0 @@
-export const RECIPES_FETCH = 'RECIPE_FETCH';

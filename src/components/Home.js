@@ -6,8 +6,8 @@ export default function Home() {
       <h2>Welcome to Recipe Box!</h2>
       <label>
         Search
-        <input type="text" />
       </label>
+      <input type="text" />
     </div>
   )
 }

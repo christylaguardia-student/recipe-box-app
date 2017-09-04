@@ -1,5 +1,4 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import Sidebar from '../components/Sidebar';
 import Details from '../components/Details';
 
@@ -16,17 +15,24 @@ const testRecipe = {
   ]
 }
 
-function RecipeContainer() {
-  return (
-    <div>
-      <Sidebar />
-      <Details recipe={testRecipe}/>
-    </div>
-  );
-}
+export default class RecipeContainer extends Component {
 
-const mapStateToProps = (state) => {
-  return { recipe: state.recipe };
-}
+  constructor(props) {
+    super(props);
 
-export default connect(mapStateToProps)(RecipeContainer);
+    this.state = {
+      selectedRecipe: testRecipe
+    }
+  }
+
+
+  render() {
+    return (
+      <div>
+        <Sidebar />
+        <Details recipe={this.state.selectedRecipe} />
+      </div>
+    );
+  }
+    
+}
