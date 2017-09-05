@@ -2,16 +2,19 @@
 
 exports[`<Details /> renders the Details component 1`] = `
 <div>
-  <h2>
+  <h1>
     Cookies
-  </h2>
-  <p>
-    Serves: 
-  </p>
-  <p>
-    Time: 
-    ?
-  </p>
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    Edit
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    Delete
+  </button>
   <h3>
     Ingredients
   </h3>
@@ -56,10 +59,5 @@ exports[`<Details /> renders the Details component 1`] = `
   <p>
     Mix stuff and put on cookie sheet. Then put in oven. Do not burn.
   </p>
-  <button
-    onClick={[Function]}
-  >
-    Edit
-  </button>
 </div>
 `;
