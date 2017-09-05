@@ -10,18 +10,21 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <h1>Recipe Box</h1>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/new">Add New</Link></li>
-            <li><Link to="/recipes">Recipes</Link></li>
-          </ul>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/new" component={Create} />
-            <Route path="/recipes" component={RecipeContainer} />
-          </Switch>
+        <div id="main">
+          <div id="top-nav">
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/new">New</Link></li>
+              <li><Link to="/recipes">Recipes</Link></li>
+            </ul>
+          </div>
+          <div>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/new" component={Create} />
+              <Route path="/recipes" component={RecipeContainer} />
+            </Switch>
+          </div>
         </div>
       </Router>
     )

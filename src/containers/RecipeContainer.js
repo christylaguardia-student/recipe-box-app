@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Sidebar from '../components/Sidebar';
 import Details from '../components/Details';
+import { request } from '../services/recipe-box.api';
 
 const testRecipe = {
   title: 'Peanut Butter and Jelly Sandwich with Honey',
@@ -21,8 +22,26 @@ export default class RecipeContainer extends Component {
     super(props);
 
     this.state = {
+      prevSelectedId: null,
+      selectedId: null,
       selectedRecipe: testRecipe
     }
+  }
+
+  componentDidUpdate(prevProps) {
+    const newSelectedId = this.props.location.pathname.split('/recipes/')[1];
+
+    if (this.state.selectedId !== newSelectedId) {
+      this.setState({ selectedId: newSelectedId });
+      this.getSelectedRecipe(newSelectedId);
+    };
+  }
+
+  getSelectedRecipe(id) {
+    return request
+      .get(id)
+      .then(res => this.setState({ selectedRecipe: res }))
+      .catch(() => console.log('uh oh, there was an error'));
   }
 
 

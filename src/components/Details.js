@@ -1,23 +1,19 @@
 import React from 'react';
-import { request } from '../services/recipe-box.api';
+import { fractions } from '../store/ingredient.constants.js';
+import '../styles/Details.css';
 
 export default function Details({ recipe }) {
 
   return (
-    <div>
-      <p>detail view</p>
+    <div id="recipe-details">
       <h2>{recipe.title}</h2>
-
       <p>Serves: {recipe.servings}</p>
       <p>Time: {convertTime(recipe.time)}</p>
-      
-      <button onClick={() => {alert("this does nothing")} }> - </button>
-      <button onClick={() => {alert("this does nothing")} }> + </button>
 
       <h3>Ingredients</h3>
       <ul>
         {recipe.ingredients.map(item => {
-          return <li key={item._id}>{item.amount} {item.unit} {item.name}</li>
+          return <li key={item._id}>{convertToFraction(item.amount)} {item.unit} {item.name}</li>
         })}
       </ul>
 
@@ -38,18 +34,35 @@ function convertTime(time) {
   else return `${minutes} minutes`;
 }
 
-function scale(ingredients, factor) {
+function convertToFraction(amount) {
+  const hasFraction = amount.toString().includes('.');
 
-  return ingredients.map(item => {
-    const newAmount = item.amount * factor;
+  if (hasFraction) {
+    const nums = amount.toString().split('.');
+    const whole = parseInt(nums[0], 10);
+    const decimal = parseFloat(`.${nums[1]}`);
+    const fraction = fractions.find(f => f.decimal === decimal);
 
-    return {
-      _id: item._id,
-      name: item.name,
-      amount: newAmount,
-      unit: item.unit
-    };
+    if (whole > 0) amount = `${whole} ${fraction.value}`;
+    else amount = fraction.value;
+  }
 
-  });
-
+  return amount;
 }
+
+// function scale(ingredients, factor) {
+
+//   let scaledIngredients = ingredients.map(item => {
+//     const newAmount = item.amount * factor;
+
+//     return {
+//       _id: item._id,
+//       name: item.name,
+//       amount: newAmount,
+//       unit: item.unit
+//     };
+
+//   });
+
+//   console.log(this.state.ingredients, scaledIngredients);
+// }
