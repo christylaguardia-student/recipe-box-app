@@ -11,9 +11,9 @@ input, textarea, select, button {
   background-color: #fff;
 }
 
-input[type="text"] {
+/* input[type="text"] {
   
-}
+} */
 
 input[type="number"] {
   width: 40px;
@@ -25,4 +25,22 @@ input:focus {
 
 table > input {
   margin: 0;
+}
+
+table {
+  border-collapse: collapse; 
+  border: 2px solid black;
+}
+
+tr td {
+  border-bottom: 1px solid black;
+}
+
+button {
+  background-color: lightgrey;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #333;
 }

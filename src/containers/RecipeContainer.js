@@ -48,8 +48,12 @@ export default class RecipeContainer extends Component {
   render() {
     return (
       <div>
-        <Sidebar />
-        <Details recipe={this.state.selectedRecipe} />
+        <div className="left-side">
+          <Sidebar />
+        </div>
+        <div className="right-side">
+          <Details recipe={this.state.selectedRecipe} />
+        </div>
       </div>
     );
   }

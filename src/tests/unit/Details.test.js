@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import Recipe from '../../components/Recipe';
+import Details from '../../components/Details';
 
-describe('<Recipe />', () => {
+describe('<Details />', () => {
 
   const testRecipe = {
     "_id": 1,
@@ -16,9 +16,9 @@ describe('<Recipe />', () => {
     ]
   }
 
-  it('shows a default recipe with edit button', () => {
-    const wrapper = toJSON(shallow(<Recipe recipe={testRecipe}/>));
+  it('renders the Details component', () => {
+    const wrapper = toJSON(shallow(<Details recipe={testRecipe} />));
     expect(wrapper).toMatchSnapshot();
   });
 
-});
+})

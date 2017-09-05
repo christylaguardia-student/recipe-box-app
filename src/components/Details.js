@@ -1,32 +1,48 @@
 import React from 'react';
 import { fractions } from '../store/ingredient.constants.js';
+import { request } from '../services/recipe-box.api';
 import '../styles/Details.css';
 
 export default function Details({ recipe }) {
 
   return (
-    <div id="recipe-details">
-      <h2>{recipe.title}</h2>
-      <p>Serves: {recipe.servings}</p>
-      <p>Time: {convertTime(recipe.time)}</p>
+    <div>
+      <h1>{recipe.title}</h1>
+      <button onClick={() => {alert("this does nothing")} }>Edit</button>
+      <button onClick={() => remove(recipe._id) }>Delete</button>
+
+      {recipe.servings ? <p>Serves: {recipe.servings}</p> : null }
+      {recipe.time ? <p>Time: {convertTime(recipe.time)}</p> : null }
 
       <h3>Ingredients</h3>
       <ul>
-        {recipe.ingredients.map(item => {
-          return <li key={item._id}>{convertToFraction(item.amount)} {item.unit} {item.name}</li>
+        {recipe.ingredients.map((item, index) => {
+          return <li key={item._id}>
+            <input type="checkbox" /> {convertToFraction(item.amount)} {item.unit} {item.name}
+            </li>
         })}
       </ul>
 
       <h3>Instructions</h3>
       <p>{recipe.instructions}</p>
-      
-      <button onClick={() => {alert("this does nothing")} }>Edit</button>
     </div>
   )
 
 }
 
+function remove(id) {
+  request.delete(id)
+    .then(removed => {
+      // TODO: show msg
+    })
+    .catch((err) => {
+      console.log('there was a problem deleing that recipe', err);
+    })
+}
+
 function convertTime(time) {
+  if (!time) return '?';
+
   const hours = Math.floor(time / 60);
   const minutes = time % 60;
 

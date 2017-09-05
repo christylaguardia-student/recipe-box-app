@@ -14,15 +14,15 @@ class App extends Component {
           <div id="top-nav">
             <ul>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/new">New</Link></li>
               <li><Link to="/recipes">Recipes</Link></li>
+              <li><Link to="/new">New</Link></li>
             </ul>
           </div>
           <div>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/new" component={Create} />
               <Route path="/recipes" component={RecipeContainer} />
+              <Route path="/new" component={Create} />
             </Switch>
           </div>
         </div>

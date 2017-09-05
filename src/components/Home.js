@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Home.css';
 
 export default class Home extends Component {
@@ -17,24 +18,16 @@ export default class Home extends Component {
   }
 
   handleOnSubmit() {
-    
+
   }
 
   render() {
     return (
       <div id="home-container">
         <div id="home">
-          <h1>Christy's Recipe Box</h1>
-          <form onSubmit={event => {
-              event.preventDefault();
-              const form = event.target;
-              this.handleOnSubmit();
-              form.reset();
-          }}>
-            <input name="search" type="text" onChange={this.handleOnChange} />
-            <br/>
-            <button type="submit">Search</button>
-          </form>
+          <h1 className="jumbo-text">Recipe Box</h1>
+          <h2>Find your recipes and cook something.</h2>
+          <Link className="jumbo-link" to="/recipes">Start</Link>
         </div>
       </div>
     )

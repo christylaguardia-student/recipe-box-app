@@ -1,6 +1,5 @@
 
 #side-nav {
-  width: 200px;
   min-height: 90vh;
   background-color: #f1f1f1;
   padding: .5rem;
@@ -10,8 +9,6 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 25vh;
-  /* position: fixed; */
   overflow: auto;
 }
 
@@ -22,12 +19,14 @@
   text-decoration: none;
 }
 
+/* TODO: active class */
+
 #side-nav li a.active {
-  background-color: #4CAF50;
+  background-color: #fff;
   color: white;
 }
 
 #side-nav li a:hover:not(.active) {
   background-color: #555;
-  color: white;
+  color: #fff;
 }

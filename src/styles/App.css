@@ -37,7 +37,28 @@ body {
   color: #000;
   font-weight: bold;
 }
-/* 
+
+.left-side {
+  float: left;
+  display: block;
+  width: 200px;
+}
+
+.right-side {
+  display: block;
+  margin-left: 220px;
+}
+/*
+
 .button {
 
 } */
+
+
+.error {
+  background-color: red;
+}
+
+.success {
+  background-color: green;
+}
