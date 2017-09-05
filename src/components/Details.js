@@ -18,7 +18,7 @@ export default function Details({ recipe }) {
       <ul>
         {recipe.ingredients.map((item, index) => {
           return <li key={item._id}>
-            <input type="checkbox" /> {convertToFraction(item.amount)} {item.unit} {item.name}
+            <input type="checkbox" />{convertToFraction(item.amount)} {item.unit} {item.name}
             </li>
         })}
       </ul>

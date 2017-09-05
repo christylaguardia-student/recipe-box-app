@@ -12,7 +12,8 @@ export const units = [
   'in',
   'can',
   'dash',
-  'pinch'
+  'pinch',
+  'none'
 ];
 
 export const fractions = [

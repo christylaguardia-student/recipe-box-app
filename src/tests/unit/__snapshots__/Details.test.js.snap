@@ -23,7 +23,6 @@ exports[`<Details /> renders the Details component 1`] = `
       <input
         type="checkbox"
       />
-       
       2
        
       cup
@@ -34,7 +33,6 @@ exports[`<Details /> renders the Details component 1`] = `
       <input
         type="checkbox"
       />
-       
       1
        
       cup
@@ -45,7 +43,6 @@ exports[`<Details /> renders the Details component 1`] = `
       <input
         type="checkbox"
       />
-       
       2 1/2
        
       cup

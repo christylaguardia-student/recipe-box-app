@@ -41,22 +41,29 @@ export default class CreateForm extends Component {
     console.log('newIngredient', newIngredient);
   
     if (newIngredient.name && newIngredient.amount) {
-      return (
+      // return (
         this.setState({
           ingredients: [
             ...this.state.ingredients,
             newIngredient
           ]})
-      );
+        
+          this.resetIngredientForm();
+      // );
     }
   }
 
-  removeIngredient(index) {
+  removeIngredient(id) {
+    let index = this.state.ingredients.indexOf(id);
+    console.log('index found', index);
+
     const { ingredients } = this.state;
     const newList = [...ingredients.slice(0, index)].concat([...ingredients.slice(++index)]);
     console.log('newList',newList);
     
     this.setState({ ingredients: newList })
+
+    //TODO: remove from table
   }
 
   convertFractionToDecimal(amount) {
@@ -79,6 +86,14 @@ export default class CreateForm extends Component {
 
   resetForm() {
     this.recipeFormRef.reset();
+  }
+
+  resetIngredientForm() {
+    // TODO
+    // this.ingredientNameRef.reset();
+    // this.ingredientWholeNumRef.reset();
+    // this.ingredientFractionRef.reset();
+    // this.ingredientUnitRef.reset();
   }
 
   saveRecipe() {
@@ -178,29 +193,29 @@ export default class CreateForm extends Component {
                   <th>Amount*</th>
                   <th>Options</th>
                 </tr>
-                {this.state.ingredients.map((item, index) => {
+                {this.state.ingredients.map(item => {
                   return (
-                    <tr key={index}>
+                    <tr key={item._id} className="dataRow">
                         <td>{item.name}</td>
                         <td>{item.amount} {item.unit}</td>
                         <td>
-                          <button onClick={() => this.removeIngredient({index})}>Remove</button>
+                          <button onClick={() => this.removeIngredient(item._id)}>Remove</button>
                         </td>
                     </tr>
                   )
                 })}
 
                 <tr>
-                  <td><input name="name" type="text" placeholder="example: flour" onChange={({target}) => this.setState({ name: target.value })} /></td>
+                  <td><input ref={(el) => this.ingredientNameRef = el} name="name" type="text" placeholder="example: flour" onChange={({target}) => this.setState({ name: target.value })} /></td>
                   <td>
-                    <input name="whole" type="number" step="1" min="0" placeholder="1" onChange={({target}) => this.setState({ whole: target.value })} />
+                    <input ref={(el) => this.ingredientWholeNumRef = el} name="whole" type="number" step="1" min="0" placeholder="1" onChange={({target}) => this.setState({ whole: target.value })} />
                     
-                    <select name="fraction" onChange={({target}) => this.setState({ fraction: target.value })} >
+                    <select ref={(el) => this.ingredientFractionRef = el} name="fraction" onChange={({target}) => this.setState({ fraction: target.value })} >
                       <option></option>
                       { fractions.map((unit, index) => <option key={index}>{unit.value}</option>) }
                     </select>
 
-                    <select name="unit" onChange={({target}) => this.setState({ unit: target.value })} >
+                    <select  ref={(el) => this.ingredientUnitRef = el} name="unit" onChange={({target}) => this.setState({ unit: target.value })} >
                       <option>none</option>
                       { units.map((unit, index) => <option key={index}>{unit}</option>) }
                     </select>

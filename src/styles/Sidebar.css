@@ -19,11 +19,8 @@
   text-decoration: none;
 }
 
-/* TODO: active class */
-
 #side-nav li a.active {
-  background-color: #fff;
-  color: white;
+  background-color: #8F8F8F;
 }
 
 #side-nav li a:hover:not(.active) {
