@@ -1,6 +1,6 @@
 import React from 'react';
 import { fractions } from '../store/ingredient.constants.js';
-import { request } from '../services/recipe-box.api';
+import request from '../services/recipe-box.api';
 import '../styles/Details.css';
 
 export default function Details({ recipe }) {

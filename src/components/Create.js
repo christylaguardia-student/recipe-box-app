@@ -3,8 +3,10 @@ import { request } from '../services/recipe-box.api';
 import Sidebar from './Sidebar';
 import '../styles/_form.css';
 import { units, fractions } from '../store/ingredient.constants.js';
+import { saveRecipe } from '../store/recipe.actions';
+import { connect } from 'react-redux';
 
-export default class CreateForm extends Component {
+class CreateForm extends Component {
 
   constructor(props) {
     super(props);
@@ -125,7 +127,9 @@ export default class CreateForm extends Component {
       recipe.ingredients = ingredientsConverted;
 
       // save the recipe
-      request.add(recipe)
+      
+      // request.add(recipe)
+      this.props.saveRecipe(recipe)
         .then(saved => {
           this.setState({
             recipeSaveError: false,
@@ -254,3 +258,5 @@ function SuccessMsg() {
   )
 
 }
+
+export default connect(null, { saveRecipe })(CreateForm);
