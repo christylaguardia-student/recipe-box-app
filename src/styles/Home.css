@@ -1,7 +1,8 @@
 
 #home-container {
   height: 100vh;
-  background-image: url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/771S335ARZ.jpg');
+  /* background-image: url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/771S335ARZ.jpg'); */
+  background-image: url('/public/images/StockSnap_771S335ARZ.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
