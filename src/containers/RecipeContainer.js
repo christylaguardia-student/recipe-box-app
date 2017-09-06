@@ -25,7 +25,7 @@ export default class RecipeContainer extends Component {
       prevSelectedId: null,
       selectedId: null,
       selectedRecipe: testRecipe
-    }
+    };
   }
 
   componentDidUpdate(prevProps) {
@@ -34,7 +34,7 @@ export default class RecipeContainer extends Component {
     if (this.state.selectedId !== newSelectedId) {
       this.setState({ selectedId: newSelectedId });
       this.getSelectedRecipe(newSelectedId);
-    };
+    }
   }
 
   getSelectedRecipe(id) {

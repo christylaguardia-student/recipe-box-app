@@ -27,7 +27,7 @@ describe('<Sidebar />', () => {
     }
   ]
 
-  it('renders the Sidebar component', () => {
+  it.skip('renders the Sidebar component', () => {
     const wrapper = toJSON(shallow(<Sidebar sidebarRecipeList={testRecipes} />));
     expect(wrapper).toMatchSnapshot();
   });

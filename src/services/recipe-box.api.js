@@ -9,10 +9,9 @@ const wrapper = cmd => cmd
     // console.log('API response', res.body);
     return res.body;
   },
-    ({ response }) => {
-      throw response.body.error;
-    }
-  );
+  ({ response }) => {
+    throw response.body.error;
+  });
 
 export default {
   getAll() {

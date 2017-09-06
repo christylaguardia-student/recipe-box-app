@@ -1,9 +1,9 @@
 import React, { Component} from 'react';
+import { connect } from 'react-redux';
+import { units, fractions } from '../store/ingredient.constants.js';
+import { saveRecipe } from '../store/recipe.actions'; 
 import Sidebar from './Sidebar';
 import '../styles/form.css';
-import { units, fractions } from '../store/ingredient.constants.js';
-import { saveRecipe } from '../store/recipe.actions';
-import { connect } from 'react-redux';
 
 class CreateRecipe extends Component {
 
@@ -24,7 +24,7 @@ class CreateRecipe extends Component {
       recipeSaveError: false,
       recipeSaved: false
       // recipeComplete: false,
-    }
+    };
 
     this.addIngredient = this.addIngredient.bind(this);
     this.saveRecipe = this.saveRecipe.bind(this);
@@ -42,25 +42,25 @@ class CreateRecipe extends Component {
     console.log('newIngredient', newIngredient);
   
     if (newIngredient.name && newIngredient.amount) {
-        this.setState({
-          ingredients: [
-            ...this.state.ingredients,
-            newIngredient
-          ]})
+      this.setState({
+        ingredients: [
+          ...this.state.ingredients,
+          newIngredient
+        ]});
         
-          this.resetIngredientForm();
+      this.resetIngredientForm();
     }
   }
 
   removeIngredient(id) {
     let index = this.state.ingredients.indexOf(id);
-    console.log('index found', index);
+    // console.log('index found', index);
 
     const { ingredients } = this.state;
     const newList = [...ingredients.slice(0, index)].concat([...ingredients.slice(++index)]);
-    console.log('newList',newList);
+    // console.log('newList',newList);
     
-    this.setState({ ingredients: newList })
+    this.setState({ ingredients: newList });
 
     //TODO: remove from table
   }
@@ -85,14 +85,14 @@ class CreateRecipe extends Component {
 
   resetForm() {
     this.recipeFormRef.reset();
+    this.recipeInstructionsFormRef.reset();
   }
 
   resetIngredientForm() {
-    // TODO
-    // this.ingredientNameRef.reset();
-    // this.ingredientWholeNumRef.reset();
-    // this.ingredientFractionRef.reset();
-    // this.ingredientUnitRef.reset();
+    this.ingredientNameRef.value = '';
+    this.ingredientWholeNumRef.value = '';
+    this.ingredientFractionRef.value = '';
+    this.ingredientUnitRef.value = '';
   }
 
   saveRecipe() {
@@ -145,7 +145,7 @@ class CreateRecipe extends Component {
         recipeSaveError: true,
         recipeSaved: false
       });
-    };
+    }
   }
 
   render () {
@@ -177,9 +177,6 @@ class CreateRecipe extends Component {
               :
               <input name="timeMin" type="number" step="5" min="0" max="55" placeholder="15" onChange={({target}) => this.setState({ minutes: target.value })} />
             </label>
-            <br />
-            <label>Instructions*</label>
-            <textarea name="instructions" required onChange={({target}) => this.setState({ instructions: target.value })} />
           </form>
 
           <div>
@@ -193,13 +190,13 @@ class CreateRecipe extends Component {
                 {this.state.ingredients.map(item => {
                   return (
                     <tr key={item._id} className="dataRow">
-                        <td>{item.name}</td>
-                        <td>{item.amount} {item.unit}</td>
-                        <td>
-                          <button onClick={() => this.removeIngredient(item._id)}>Remove</button>
-                        </td>
+                      <td>{item.name}</td>
+                      <td>{item.amount} {item.unit}</td>
+                      <td>
+                        <button onClick={() => this.removeIngredient(item._id)}>Remove</button>
+                      </td>
                     </tr>
-                  )
+                  );
                 })}
 
                 <tr>
@@ -225,6 +222,11 @@ class CreateRecipe extends Component {
             </table>
           </div>
 
+          <form ref={(el) => this.recipeInstructionsFormRef = el}>
+            <label>Instructions*</label>
+            <textarea name="instructions" required onChange={({target}) => this.setState({ instructions: target.value })} />
+          </form>
+
           <button onClick={this.saveRecipe}>Save</button>
 
         </div>
@@ -239,7 +241,7 @@ function ErrorMsg() {
     <div className="error">
       <p>Uh-Oh! Your recipe could not be saved.</p>
     </div>
-  )
+  );
 }
 
 function SuccessMsg() {
@@ -247,7 +249,7 @@ function SuccessMsg() {
     <div className="success">
       <p>Your recipe was saved!</p>
     </div>
-  )
+  );
 
 }
 

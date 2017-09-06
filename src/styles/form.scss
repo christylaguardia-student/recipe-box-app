@@ -53,8 +53,9 @@ button:hover {
 }
 
 .error, .success {
+  width: 30%;
   border-radius: .5rem;
-  padding: .5rem;
+  padding: .25rem;
   margin: .5rem;
   text-align: center;
 }

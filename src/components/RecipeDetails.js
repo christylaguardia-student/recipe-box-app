@@ -1,13 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { fractions } from '../store/ingredient.constants.js';
+import { deleteRecipe } from '../store/recipe.actions';
 import '../styles/RecipeDetails.css';
 
-export default function Details({ recipe }) {
+function RecipeDetails({ recipe }) {
 
   return (
     <div>
       <h1>{recipe.title}</h1>
-      <button className="right-button" onClick={() => {alert("this does nothing")} }>Edit</button>
+      <button className="right-button" onClick={() => { alert('this does nothing'); }}>Edit</button>
       <button className="right-button" onClick={() => remove(recipe._id) }>Delete</button>
 
       {recipe.servings ? <p>Serves: {recipe.servings}</p> : null }
@@ -15,34 +17,33 @@ export default function Details({ recipe }) {
 
       <h3>Ingredients</h3>
       <ul>
-        {recipe.ingredients.map((item, index) => {
-          return <li key={item._id}>
-            <input type="checkbox" />{convertToFraction(item.amount)} {item.unit} {item.name}
+        {recipe.ingredients.map(item => {
+          return (
+            <li key={item._id}>
+              <input type="checkbox" />{convertToFraction(item.amount)} {item.unit} {item.name}
             </li>
+          );
         })}
       </ul>
 
       <h3>Instructions</h3>
       <p>{recipe.instructions}</p>
     </div>
-  )
+  );
 
 }
 
 function remove(id) {
-  // TODO: replace with prop
-  // request.delete(id)
-  //   .then(removed => {
-  //     // TODO: show msg
-  //   })
+  this.props.deleteRecipe(id)
+    .then(removed => {
+      console.log(removed);
+    });
   //   .catch((err) => {
   //     console.log('there was a problem deleing that recipe', err);
   //   })
 }
 
 function convertTime(time) {
-  if (!time) return '?';
-
   const hours = Math.floor(time / 60);
   const minutes = time % 60;
 
@@ -82,3 +83,6 @@ function convertToFraction(amount) {
 
 //   console.log(this.state.ingredients, scaledIngredients);
 // }
+
+
+export default connect(null, { deleteRecipe })(RecipeDetails);
