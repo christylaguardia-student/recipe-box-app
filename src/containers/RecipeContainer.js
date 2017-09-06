@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Sidebar from '../components/Sidebar';
-import Details from '../components/Details';
-import { request } from '../services/recipe-box.api';
+import RecipeDetails from '../components/RecipeDetails';
+import request from '../services/recipe-box.api';
 
 const testRecipe = {
   title: 'Peanut Butter and Jelly Sandwich with Honey',
@@ -52,7 +52,7 @@ export default class RecipeContainer extends Component {
           <Sidebar />
         </div>
         <div className="right-side">
-          <Details recipe={this.state.selectedRecipe} />
+          <RecipeDetails recipe={this.state.selectedRecipe} />
         </div>
       </div>
     );

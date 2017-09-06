@@ -1,0 +1,46 @@
+label {
+  display: block; }
+
+input, textarea, select, button {
+  margin: .25rem;
+  font-size: 1rem;
+  border-radius: 2px;
+  border: 1px solid #aaaaaa;
+  background-color: #fdfcfa;
+  padding: .5rem; }
+
+input[type="number"] {
+  width: 40px; }
+
+input:focus {
+  outline: none; }
+
+table > input {
+  margin: 0; }
+
+table {
+  border-collapse: collapse;
+  border: 1px solid #aaaaaa; }
+
+tr td {
+  border-bottom: 1px solid #aaaaaa; }
+
+button {
+  background-color: #dddddd;
+  color: #000; }
+
+button:hover {
+  background-color: #1dbad3;
+  color: #fdfcfa; }
+
+.error {
+  background-color: #d3361d; }
+
+.success {
+  background-color: #1dd391; }
+
+.error, .success {
+  border-radius: .5rem;
+  padding: .5rem;
+  margin: .5rem;
+  text-align: center; }

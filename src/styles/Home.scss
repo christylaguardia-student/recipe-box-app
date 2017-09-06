@@ -1,9 +1,13 @@
+@import "_colors";
+@import "_images";
+
 #home-container {
   height: calc(100vh - 50px);
-  background-image: url("../images/StockSnap_771S335ARZ.jpg");
+  background-image: url($home-background);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; }
+  background-size: cover;
+}
 
 #home {
   margin: auto;
@@ -11,32 +15,37 @@
   padding: 2rem;
   text-align: center;
   vertical-align: middle;
-  background-color: #fdfcfa;
+  background-color: $white;
   opacity: .7;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+}
 
 .jumbo-text {
   display: block;
   font-size: 3rem;
   text-align: center;
   padding: 1rem;
-  color: #1dbad3; }
+  color: $highlight;
+}
 
 .jumbo-link {
   padding: .5rem 1rem;
   vertical-align: middle;
   font-size: 1.5rem;
   text-decoration: none;
-  border: 1px solid #000;
-  border-radius: 2px; }
+  border: 1px solid $black;
+  border-radius: 2px;
+}
 
 .jumbo-link {
-  background-color: #000;
-  color: #fdfcfa;
-  display: inline-block; }
+  background-color: $black;
+  color: $white;
+  display: inline-block;
+}
 
 .jumbo-link:hover {
-  background-color: #1dbad3;
-  color: #000; }
+  background-color: $highlight;
+  color: $black;
+}

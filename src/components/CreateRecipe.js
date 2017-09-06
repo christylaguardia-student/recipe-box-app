@@ -1,10 +1,11 @@
 import React, { Component} from 'react';
-import { request } from '../services/recipe-box.api';
 import Sidebar from './Sidebar';
-import '../styles/_form.css';
+import '../styles/form.css';
 import { units, fractions } from '../store/ingredient.constants.js';
+import { saveRecipe } from '../store/recipe.actions';
+import { connect } from 'react-redux';
 
-export default class CreateForm extends Component {
+class CreateRecipe extends Component {
 
   constructor(props) {
     super(props);
@@ -41,7 +42,6 @@ export default class CreateForm extends Component {
     console.log('newIngredient', newIngredient);
   
     if (newIngredient.name && newIngredient.amount) {
-      // return (
         this.setState({
           ingredients: [
             ...this.state.ingredients,
@@ -49,7 +49,6 @@ export default class CreateForm extends Component {
           ]})
         
           this.resetIngredientForm();
-      // );
     }
   }
 
@@ -125,17 +124,14 @@ export default class CreateForm extends Component {
       recipe.ingredients = ingredientsConverted;
 
       // save the recipe
-      request.add(recipe)
+      this.props.saveRecipe(recipe)
         .then(saved => {
           this.setState({
             recipeSaveError: false,
             recipeSaved: true
           });
         })
-        .then(() => {
-          // TODO: update sidebar
-          this.resetForm();
-        })
+        .then(() => this.resetForm())
         .catch((err) => {
           console.log('uh-oh, there was an error during the save', err);
           this.setState({
@@ -159,11 +155,12 @@ export default class CreateForm extends Component {
           <Sidebar />
         </div>
         <div className="right-side">
+          
+          <h1>Create Recipe</h1>
 
           {this.state.recipeSaveError ? <ErrorMsg /> : null }
           {this.state.recipeSaved ? <SuccessMsg /> : null }
           
-          <h1>Create Recipe</h1>
           <form ref={(el) => this.recipeFormRef = el}>
             <label>
               Title* 
@@ -237,7 +234,6 @@ export default class CreateForm extends Component {
 
 }
 
-
 function ErrorMsg() {
   return (
     <div className="error">
@@ -254,3 +250,5 @@ function SuccessMsg() {
   )
 
 }
+
+export default connect(null, { saveRecipe })(CreateRecipe);

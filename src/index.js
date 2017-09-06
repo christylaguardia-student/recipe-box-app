@@ -7,9 +7,9 @@ import thunk from 'redux-thunk';
 import './styles/index.css';
 import AppContainer from './containers/AppContainer';
 import registerServiceWorker from './registerServiceWorker';
-import recipeReducer from './store/recipe.reducer';
+import recipeReducers from './store/recipe.reducer';
 
-const rootReducer = combineReducers({ recipes: recipeReducer });
+const rootReducer = combineReducers({ recipes: recipeReducers });
 
 const store = createStore(
   rootReducer,

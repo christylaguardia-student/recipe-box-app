@@ -1,15 +1,14 @@
 import React from 'react';
 import { fractions } from '../store/ingredient.constants.js';
-import { request } from '../services/recipe-box.api';
-import '../styles/Details.css';
+import '../styles/RecipeDetails.css';
 
 export default function Details({ recipe }) {
 
   return (
     <div>
       <h1>{recipe.title}</h1>
-      <button onClick={() => {alert("this does nothing")} }>Edit</button>
-      <button onClick={() => remove(recipe._id) }>Delete</button>
+      <button className="right-button" onClick={() => {alert("this does nothing")} }>Edit</button>
+      <button className="right-button" onClick={() => remove(recipe._id) }>Delete</button>
 
       {recipe.servings ? <p>Serves: {recipe.servings}</p> : null }
       {recipe.time ? <p>Time: {convertTime(recipe.time)}</p> : null }
@@ -31,13 +30,14 @@ export default function Details({ recipe }) {
 }
 
 function remove(id) {
-  request.delete(id)
-    .then(removed => {
-      // TODO: show msg
-    })
-    .catch((err) => {
-      console.log('there was a problem deleing that recipe', err);
-    })
+  // TODO: replace with prop
+  // request.delete(id)
+  //   .then(removed => {
+  //     // TODO: show msg
+  //   })
+  //   .catch((err) => {
+  //     console.log('there was a problem deleing that recipe', err);
+  //   })
 }
 
 function convertTime(time) {

@@ -1,0 +1,60 @@
+@import "_colors";
+
+label {
+  display: block;
+}
+
+input, textarea, select, button {
+  margin: .25rem;
+  font-size: 1rem;
+  border-radius: 2px;
+  border: 1px solid $border; 
+  background-color: $white;
+  padding: .5rem;
+}
+
+input[type="number"] {
+  width: 40px;
+}
+
+input:focus {
+  outline: none;
+}
+
+table > input {
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse; 
+  border: 1px solid $border;
+}
+
+tr td {
+  border-bottom: 1px solid $border;
+}
+
+button {
+  background-color: $light;
+  color: $black;
+}
+
+button:hover {
+  background-color: $highlight;
+  color: $white;
+}
+
+.error {
+  background-color: #d3361d;
+}
+
+.success {
+  background-color: #1dd391;
+}
+
+.error, .success {
+  border-radius: .5rem;
+  padding: .5rem;
+  margin: .5rem;
+  text-align: center;
+}

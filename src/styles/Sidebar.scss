@@ -1,24 +1,31 @@
+@import "/_colors";
+
 #side-nav {
   min-height: calc(100vh - 50px);
-  background-color: #fdfcfa;
+  background-color: $white;
   padding: .5rem;
-  border-right: 1px solid #bbbbbb; }
+  border-right: 1px solid $dark;
+}
 
 #side-nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: auto; }
+  overflow: auto;
+}
 
 #side-nav li a {
   display: block;
-  color: #000;
+  color: $black;
   padding: 8px 16px;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 #side-nav li a.active {
-  background-color: #8F8F8F; }
+  background-color: #8F8F8F;
+}
 
 #side-nav li a:hover:not(.active) {
-  background-color: #1dbad3;
-  color: #fdfcfa; }
+  background-color: $highlight;
+  color: $white;
+}
