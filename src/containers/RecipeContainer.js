@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Sidebar from '../components/Sidebar';
 import Details from '../components/Details';
-import { request } from '../services/recipe-box.api';
+import request from '../services/recipe-box.api';
 
 const testRecipe = {
   title: 'Peanut Butter and Jelly Sandwich with Honey',

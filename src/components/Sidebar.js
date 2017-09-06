@@ -1,31 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { request } from '../services/recipe-box.api';
+import request from '../services/recipe-box.api';
 import '../styles/Sidebar.css';
+import { getRecipes } from '../store/recipe.actions';
 
-export default class SideBar extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      sidebarRecipeList: []
-    }
-  }
+class SideBar extends Component {
 
   componentDidMount() {
-    return request.getAll()
-      .then(recipes => {
-        this.setState({ sidebarRecipeList: recipes });
-      })
-      .catch(error => console.log('uh-oh! there was an error getting all the recipes.'));
+    this.props.getRecipes();
   }
 
   render() {
     return (
       <div id="side-nav">
         <ul>
-          {this.state.sidebarRecipeList.map(item => {
+          {this.props.recipes.map(item => {
             return <li key={item._id}><NavLink to={`/recipes/${item._id}`}>{item.title}</NavLink></li>
           })}
         </ul>
@@ -33,3 +23,7 @@ export default class SideBar extends Component {
     );
   }
 }
+
+export default connect((state) =>{
+  return { recipes: state.recipes };
+}, { getRecipes })(SideBar);

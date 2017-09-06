@@ -1,0 +1,2 @@
+export const SAVED_RECIPE = 'SAVED_RECIPE';
+export const FETCH_RECIPES = 'FETCH_RECIPES';

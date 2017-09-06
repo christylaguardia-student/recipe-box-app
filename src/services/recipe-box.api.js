@@ -14,7 +14,7 @@ const wrapper = cmd => cmd
     }
   );
 
-export const request = {
+export default {
   getAll() {
     return wrapper(superagent.get(API_URL));
   },
