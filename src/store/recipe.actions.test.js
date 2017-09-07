@@ -16,7 +16,7 @@ describe('recipe actions', () => {
 
     dispatchFn(dispatch)
       .then(() => {
-        expect(dispatched).toEqual([{type: actions.RECIPE_ADDED, payload:recipe}]);
+        expect(dispatched).toEqual([{ type: actions.RECIPE_ADDED, payload: recipe }]);
       });
   });
 

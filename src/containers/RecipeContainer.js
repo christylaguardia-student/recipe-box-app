@@ -3,6 +3,7 @@ import Sidebar from '../components/Sidebar';
 import RecipeDetails from '../components/RecipeDetails';
 import request from '../services/recipe-box.api';
 
+// TODO: make this go away, show you don't have recipes if db is empty
 const testRecipe = {
   title: 'Peanut Butter and Jelly Sandwich with Honey',
   servings: 1,
@@ -14,7 +15,7 @@ const testRecipe = {
     { _id: 3, name: 'Jelly', amount: 2, unit: 'tbsp' },
     { _id: 4, name: 'Honey', amount: 1, unit: 'tsp' }
   ]
-}
+};
 
 export default class RecipeContainer extends Component {
 
@@ -22,7 +23,7 @@ export default class RecipeContainer extends Component {
     super(props);
 
     this.state = {
-      prevSelectedId: null,
+      // prevSelectedId: null,
       selectedId: null,
       selectedRecipe: testRecipe
     };
