@@ -1,46 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fractions } from '../store/ingredient.constants.js';
 import { deleteRecipe } from '../store/recipe.actions';
 import '../styles/RecipeDetails.css';
 
-function RecipeDetails({ recipe }) {
+class RecipeDetails extends Component {
 
-  return (
-    <div id="recipe-details">
-      <h1>{recipe.title}</h1>
-      {/* <button className="right-button" onClick={() => { alert('this does nothing'); }}>Edit</button> */}
-      <button className="right-button" onClick={() => remove(recipe._id) }>Delete</button>
+  remove(id) {
+    this.props.deleteRecipe(id);
+      // .then(removed => {
+      //   console.log(removed);
+      // });
+  }
 
-      {recipe.servings ? <p>Serves: {recipe.servings}</p> : null }
-      {recipe.time ? <p>Time: {convertTime(recipe.time)}</p> : null }
-
-      <h3>Ingredients</h3>
-      <ul>
-        {recipe.ingredients.map(item => {
-          return (
-            <li key={item._id}>
-              <input type="checkbox" />{convertToFraction(item.amount)} {item.unit} {item.name}
-            </li>
-          );
-        })}
-      </ul>
-
-      <h3>Instructions</h3>
-      <p>{recipe.instructions}</p>
-    </div>
-  );
-
-}
-
-function remove(id) {
-  this.props.deleteRecipe(id)
-    .then(removed => {
-      console.log(removed);
-    });
-  //   .catch((err) => {
-  //     console.log('there was a problem deleing that recipe', err);
-  //   })
+  render() {
+    const { recipe } = this.props;
+  
+    return (
+      <div id="recipe-details">
+        <h1>{recipe.title}</h1>
+        {/* <button className="right-button" onClick={() => { alert('this does nothing'); }}>Edit</button> */}
+        <button className="right-button" onClick={() => this.remove(recipe._id) }>Delete</button>
+  
+        {recipe.servings ? <p>Serves: {recipe.servings}</p> : null }
+        {recipe.time ? <p>Time: {convertTime(recipe.time)}</p> : null }
+  
+        <h3>Ingredients</h3>
+        <ul>
+          {recipe.ingredients.map(item => {
+            return (
+              <li key={item._id}>
+                <input type="checkbox" />{convertToFraction(item.amount)} {item.unit} {item.name}
+              </li>
+            );
+          })}
+        </ul>
+  
+        <h3>Instructions</h3>
+        <p>{recipe.instructions}</p>
+      </div>
+    );
+  }
 }
 
 function convertTime(time) {

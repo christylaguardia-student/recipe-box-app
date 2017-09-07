@@ -1,5 +1,9 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
+
+import ReactQuill from 'react-quill';
+import theme from 'react-quill/dist/quill.snow.css';
+
 import { units } from '../store/ingredient.constants.js';
 import { saveRecipe } from '../store/recipe.actions'; 
 import Sidebar from './Sidebar';
@@ -25,10 +29,7 @@ class CreateRecipe extends Component {
 
     this.addIngredient = this.addIngredient.bind(this);
     this.saveRecipe = this.saveRecipe.bind(this);
-  }
-
-  componentDidUpdate() {
-
+    this.handleQuillChange = this.handleQuillChange.bind(this);
   }
 
   addIngredient(name, amount, unit) {
@@ -76,6 +77,8 @@ class CreateRecipe extends Component {
       ingredients: this.state.ingredients
     };
 
+    console.log('new recipe to save', recipe);
+
     // check if required fields are populated
     if (recipe.title !== '' || recipe.instructions !== '' || recipe.ingredients.length > 0 ) {
       // save the recipe
@@ -91,6 +94,10 @@ class CreateRecipe extends Component {
       // show error message
       this.setState({ recipeSaveError: true, recipeSaved: false });
     }
+  }
+
+  handleQuillChange(html) {
+    this.setState({ instructions: html });
   }
 
   render () {
@@ -159,10 +166,21 @@ class CreateRecipe extends Component {
             </table>
           </div>
 
-          <form ref={(el) => this.recipeInstructionsFormRef = el}>
+          {/* <form ref={(el) => this.recipeInstructionsFormRef = el}>
             <label>Instructions*</label>
-            <textarea name="instructions" required onChange={({target}) => this.setState({ instructions: target.value })} />
-          </form>
+            <textarea name="instructions"
+              onChange={({target}) => this.setState({ instructions: target.value })}
+            />
+          </form> */}
+
+          <label>Instructions*</label>
+          <ReactQuill
+            ref={(el) => this.recipeInstructionsFormRef = el}
+            placeholder="Mix ingredients then..."
+            theme="snow"
+            modules={quillModules}
+            onChange={this.handleQuillChange}
+          />
 
           <button onClick={this.saveRecipe}>Save</button>
 
@@ -188,5 +206,15 @@ function SuccessMsg() {
     </div>
   );
 }
+
+const quillModules = {
+  toolbar: [
+    [{ 'font': [] }, {size: []}],
+    ['bold', 'italic', 'underline','strike', 'blockquote'],
+    [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+    ['link', 'image'],
+    ['clean']
+  ]
+};
 
 export default connect(null, { saveRecipe })(CreateRecipe);
