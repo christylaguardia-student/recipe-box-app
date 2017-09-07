@@ -11,7 +11,7 @@ describe('user reducer', () => {
 
   it('fetches the user', () => {
     const userState =  { email: 'christy@me.com' };
-    const newState  = userReducer({}, { type: actions.FETCHED_USER, payload: userState });
+    const newState  = userReducer({}, { type: actions.FETCH_USER, payload: userState });
 
     expect(newState).toEqual(userState);
   });
