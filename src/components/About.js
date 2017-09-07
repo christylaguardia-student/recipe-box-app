@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/About.css';
-const imageSource = require('../images/stock-photo-vintage-metal-recipe-box-with-recipes-inside-isolated-on-white-background-120987220.jpg');
+const imageSource = require('../images/vintage-recipe-box.jpg');
 
 export default function About() {
 
