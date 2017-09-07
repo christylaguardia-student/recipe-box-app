@@ -7,9 +7,9 @@ import '../styles/RecipeDetails.css';
 function RecipeDetails({ recipe }) {
 
   return (
-    <div>
+    <div id="recipe-details">
       <h1>{recipe.title}</h1>
-      <button className="right-button" onClick={() => { alert('this does nothing'); }}>Edit</button>
+      {/* <button className="right-button" onClick={() => { alert('this does nothing'); }}>Edit</button> */}
       <button className="right-button" onClick={() => remove(recipe._id) }>Delete</button>
 
       {recipe.servings ? <p>Serves: {recipe.servings}</p> : null }
@@ -67,6 +67,7 @@ function convertToFraction(amount) {
   return amount;
 }
 
+//TODO:
 // function scale(ingredients, factor) {
 
 //   let scaledIngredients = ingredients.map(item => {

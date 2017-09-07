@@ -2,7 +2,8 @@
   min-height: calc(100vh - 50px);
   background-color: #fdfcfa;
   padding: .5rem;
-  border-right: 1px solid #bbbbbb; }
+  border-right: 1px solid #bbbbbb;
+  margin-top: -1px; }
 
 #side-nav ul {
   list-style-type: none;
@@ -17,7 +18,7 @@
   text-decoration: none; }
 
 #side-nav li a.active {
-  background-color: #8F8F8F; }
+  background-color: #bbbbbb; }
 
 #side-nav li a:hover:not(.active) {
   background-color: #1dbad3;

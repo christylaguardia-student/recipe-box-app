@@ -1,5 +1,7 @@
 label {
-  display: block; }
+  display: block;
+  margin-top: .5rem;
+  margin-bottom: .5rem; }
 
 input, textarea, select, button {
   margin: .25rem;
@@ -9,21 +11,44 @@ input, textarea, select, button {
   background-color: #fdfcfa;
   padding: .5rem; }
 
+input, select, button {
+  text-align: center; }
+
+select {
+  box-sizing: border-box;
+  height: 36px; }
+
+input[type="text"] {
+  width: 300px; }
+
 input[type="number"] {
-  width: 40px; }
+  width: 60px; }
 
 input:focus {
   outline: none; }
+
+textarea {
+  height: 300px;
+  width: 600px; }
 
 table > input {
   margin: 0; }
 
 table {
+  margin: 1rem 0;
   border-collapse: collapse;
-  border: 1px solid #aaaaaa; }
+  border: 1px solid #aaaaaa;
+  width: 600px;
+  text-align: center; }
 
 tr td {
   border-bottom: 1px solid #aaaaaa; }
+
+.input-row {
+  background-color: #cccccc; }
+
+tr:nth-child(even):not(.input-row) {
+  background-color: #fdfcfa; }
 
 button {
   background-color: #dddddd;
@@ -40,7 +65,7 @@ button:hover {
   background-color: #1dd391; }
 
 .error, .success {
-  width: 30%;
+  width: 300px;
   border-radius: .5rem;
   padding: .25rem;
   margin: .5rem;

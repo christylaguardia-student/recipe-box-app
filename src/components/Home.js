@@ -9,7 +9,7 @@ export default class Home extends Component {
 
     this.state = {
       search: ''
-    }
+    };
   }
 
   handleOnChange(e) {
@@ -17,19 +17,19 @@ export default class Home extends Component {
     this.setState({ search });
   }
 
-  handleOnSubmit() {
+  // handleOnSubmit() {
 
-  }
+  // }
 
   render() {
     return (
       <div id="home-container">
         <div id="home">
           <h1 className="jumbo-text">Recipe Box</h1>
-          <h2>Find your recipes and cook something.</h2>
-          <Link className="jumbo-link" to="/recipes">Start</Link>
+          <h2>Find your recipes. Cook something.</h2>
+          <Link className="jumbo-link" to="/recipes">Sign Up</Link>
         </div>
       </div>
-    )
+    );
   }
 }

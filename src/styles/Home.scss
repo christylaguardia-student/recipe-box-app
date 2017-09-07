@@ -10,6 +10,7 @@
 }
 
 #home {
+  border-radius: 10px;
   margin: auto;
   position: absolute;
   padding: 2rem;
@@ -30,19 +31,25 @@
   color: $highlight;
 }
 
+.jumbo-text, #home h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .jumbo-link {
   padding: .5rem 1rem;
   vertical-align: middle;
   font-size: 1.5rem;
   text-decoration: none;
   border: 1px solid $black;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 .jumbo-link {
   background-color: $black;
   color: $white;
   display: inline-block;
+  margin: 1rem;  
 }
 
 .jumbo-link:hover {

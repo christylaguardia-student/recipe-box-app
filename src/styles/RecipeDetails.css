@@ -1,8 +1,8 @@
-ul {
-  list-style-type: none; }
+#recipe-details {
+  padding-right: 2rem; }
 
-h1 {
-  display: inline-block; }
+#recipe-details ul {
+  list-style-type: none; }
 
 .right-button {
   float: right; }
