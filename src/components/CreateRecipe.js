@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 
 import ReactQuill from 'react-quill';
 import theme from 'react-quill/dist/quill.snow.css';
+import '../styles/quill.css';
 
 import { units } from '../store/ingredient.constants.js';
-import { saveRecipe } from '../store/recipe.actions'; 
+import { saveRecipe } from '../store/recipe.actions';
 import Sidebar from './Sidebar';
 import '../styles/form.css';
 
@@ -58,7 +59,8 @@ class CreateRecipe extends Component {
 
   resetForm() {
     this.recipeFormRef.reset();
-    this.recipeInstructionsFormRef.reset();
+    //TODO: fix
+    // this.recipeInstructionsFormRef.value = '';
   }
 
   resetIngredientForm() {
@@ -77,22 +79,27 @@ class CreateRecipe extends Component {
       ingredients: this.state.ingredients
     };
 
-    console.log('new recipe to save', recipe);
-
     // check if required fields are populated
     if (recipe.title !== '' || recipe.instructions !== '' || recipe.ingredients.length > 0 ) {
       // save the recipe
       this.props.saveRecipe(recipe)
-        .then(saved => {
-          this.setState({ recipeSaveError: false, recipeSaved: true });
-        })
+        .then(saved => this.setState({
+          recipeSaveError: false,
+          recipeSaved: true
+        }))
         .then(() => this.resetForm())
-        .catch((err) => {
-          this.setState({ recipeSaveError: true, recipeSaved: false });
+        .catch(err => {
+          this.setState({
+            recipeSaveError: true, 
+            recipeSaved: false
+          });
         });
     } else {
       // show error message
-      this.setState({ recipeSaveError: true, recipeSaved: false });
+      this.setState({
+        recipeSaveError: true,
+        recipeSaved: false
+      });
     }
   }
 

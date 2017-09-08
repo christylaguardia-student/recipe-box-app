@@ -6,6 +6,7 @@ export const API_URL = '/api/recipes';
 // or throw an error
 const wrapper = cmd => cmd
   .then(res => {
+    console.log(res.body);
     return res.body;
   },
   ({ response }) => {

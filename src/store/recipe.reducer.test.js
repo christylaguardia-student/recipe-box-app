@@ -21,17 +21,24 @@ describe('recipe reducer', () => {
     expect(newState2).toEqual([recipe, recipe2]);
   });
 
-  it('fetches  all recipes', () => {
+  it('gets  all recipes', () => {
     const newState = reducer([], { type: actions.RECIPES_GET_ALL, payload: [1,2,3] });
     
     expect(newState).toEqual([1,2,3]);
   });
 
-  it('deletes a recipe', () => {
+  it('deletes a recipe by id', () => {
     const recipeId = 1;
     const newState = reducer([], { type: actions.RECIPE_REMOVED, payload: recipeId });
     
     expect(newState).toEqual([]);
+  });
+
+  it('gets a recipe by id', () => {
+    const recipeId = 1;
+    const newState = reducer([], { type: actions.RECIPE_GET, payload: recipeId });
+    
+    expect(newState).toEqual(recipeId); // not sure about this
   });
 
 });

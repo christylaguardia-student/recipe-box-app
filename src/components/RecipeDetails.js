@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ReactQuill from 'react-quill';
+
 import { fractions } from '../store/ingredient.constants.js';
 import { deleteRecipe } from '../store/recipe.actions';
 import '../styles/RecipeDetails.css';
@@ -14,7 +16,8 @@ class RecipeDetails extends Component {
   }
 
   render() {
-    const { recipe } = this.props;
+    const recipe = this.props.recipe;
+    console.log(recipe);
   
     return (
       <div id="recipe-details">
@@ -37,7 +40,9 @@ class RecipeDetails extends Component {
         </ul>
   
         <h3>Instructions</h3>
-        <p>{recipe.instructions}</p>
+        <ReactQuill
+          theme={null}
+          value={recipe.instructions} />
       </div>
     );
   }

@@ -1,5 +1,10 @@
 import * as actions from './recipe.constants';
-import { makeSaveRecipe, makeGetRecipes, makeDeleteRecipe } from './recipe.actions';
+import {
+  makeSaveRecipe,
+  makeGetRecipes,
+  makeDeleteRecipe,
+  makeGetRecipeById
+} from './recipe.actions';
 
 describe('recipe actions', () => {
 
@@ -7,7 +12,7 @@ describe('recipe actions', () => {
     const api = {
       add(recipe) { return Promise.resolve(recipe); }
     };
-    const recipe = { title: 'my recipe' };
+    const recipe = { id: 1, title: 'my recipe' };
 
     const dispatched = [];
     const dispatch = (action) => { dispatched.push(action); };
@@ -51,6 +56,23 @@ describe('recipe actions', () => {
     dispatchFn(dispatch)
       .then(() => {
         expect(dispatched).toEqual([{ type: actions.RECIPE_REMOVED, payload: recipeId }]);
+      });
+  });
+
+  it('get a recipes', () => {
+    const recipeId = 1;
+    const api = {
+      get(recipeId) { return Promise.resolve(recipeId); }
+    };
+
+    const dispatched = [];
+    const dispatch = (action) => { dispatched.push(action); };
+    const getRecipeById = makeGetRecipeById(api);
+    const dispatchFn = getRecipeById(recipeId);
+
+    dispatchFn(dispatch)
+      .then(() => {
+        expect(dispatched).toEqual([{ type: actions.RECIPE_GET, payload: recipeId }]);
       });
   });
 

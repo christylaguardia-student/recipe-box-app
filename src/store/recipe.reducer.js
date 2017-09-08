@@ -1,8 +1,11 @@
 import * as actions from './recipe.constants';
 
-export default function recipe(state = [], { type, payload}) {
+export default function recipe(state = [], { type, payload }) {
   switch(type) {
     case actions.RECIPES_GET_ALL:
+      return payload;
+    
+    case actions.RECIPE_GET:
       return payload;
     
     case actions.RECIPE_ADDED:

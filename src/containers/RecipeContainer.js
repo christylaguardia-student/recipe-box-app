@@ -1,31 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Sidebar from '../components/Sidebar';
 import RecipeDetails from '../components/RecipeDetails';
-import request from '../services/recipe-box.api';
+import { getRecipe } from '../store/recipe.actions'; 
 
-// TODO: make this go away, show you don't have recipes if db is empty
-const testRecipe = {
-  title: 'Peanut Butter and Jelly Sandwich with Honey',
-  servings: 1,
-  time: 83,
-  instructions: 'Spread peanut butter on one slice of bread, and jelly and honey on the other',
-  ingredients: [
-    { _id: 1, name: 'Bread', amount: 2, unit: 'none' },
-    { _id: 2, name:'Peanut Butter', amount: 2, unit: 'tbsp' },
-    { _id: 3, name: 'Jelly', amount: 2, unit: 'tbsp' },
-    { _id: 4, name: 'Honey', amount: 1, unit: 'tsp' }
-  ]
-};
+function NoRecipe() {
+  return (
+    <h1>Click on a recipe to view</h1>
+  );
+}
 
-export default class RecipeContainer extends Component {
+class RecipeContainer extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      // prevSelectedId: null,
       selectedId: null,
-      selectedRecipe: testRecipe
+      selectedRecipe: null
     };
   }
 
@@ -33,17 +25,19 @@ export default class RecipeContainer extends Component {
     const newSelectedId = this.props.location.pathname.split('/recipes/')[1];
 
     if (this.state.selectedId !== newSelectedId) {
-      this.setState({ selectedId: newSelectedId });
-      this.getSelectedRecipe(newSelectedId);
+      this.setState({ 
+        selectedId: newSelectedId,
+        selectedRecipe: this.props.getRecipe(newSelectedId)
+      });
     }
   }
 
-  getSelectedRecipe(id) {
-    return request
-      .get(id)
-      .then(res => this.setState({ selectedRecipe: res }))
-      .catch(() => console.log('uh oh, there was an error'));
-  }
+  // getSelectedRecipe(id) {
+  //   return request
+  //     .get(id)
+  //     .then(res => this.setState({ selectedRecipe: res }))
+  //     .catch(() => console.log('uh oh, there was an error'));
+  // }
 
 
   render() {
@@ -53,10 +47,12 @@ export default class RecipeContainer extends Component {
           <Sidebar />
         </div>
         <div className="right-side">
-          <RecipeDetails recipe={this.state.selectedRecipe} />
+          {this.state.selectedId !== null ? <RecipeDetails recipe={this.state.selectedRecipe} /> : <NoRecipe /> }
         </div>
       </div>
     );
   }
     
 }
+
+export default connect(null, { getRecipe })(RecipeContainer);
