@@ -1,7 +1,7 @@
 import * as actions from './recipe.constants';
 import {
   makeSaveRecipe,
-  makeGetRecipes,
+  makeGetAllRecipes,
   makeDeleteRecipe,
   makeGetRecipeById
 } from './recipe.actions';
@@ -33,8 +33,8 @@ describe('recipe actions', () => {
 
     const dispatched = [];
     const dispatch = (action) => { dispatched.push(action); };
-    const getRecipes = makeGetRecipes(api);
-    const dispatchFn = getRecipes();
+    const getAllRecipes = makeGetAllRecipes(api);
+    const dispatchFn = getAllRecipes();
 
     dispatchFn(dispatch)
       .then(() => {

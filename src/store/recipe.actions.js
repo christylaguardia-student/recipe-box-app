@@ -1,6 +1,8 @@
 import * as actions from './recipe.constants';
 import api from '../services/recipe-box.api';
 
+// SAVE
+
 export function makeSaveRecipe(api) {
   return function saveRecipe(recipe) {
     return dispatch => {
@@ -13,17 +15,22 @@ export function makeSaveRecipe(api) {
 
 export const saveRecipe = makeSaveRecipe(api);
 
-export function makeGetRecipes(api) {
-  return function getRecipes() {
+// GET ALL
+
+export function makeGetAllRecipes(api) {
+  return function getAllRecipes() {
     return dispatch => {
       return api
         .getAll()
-        .then(recipes => dispatch({ type: actions.RECIPES_GET_ALL, payload: recipes }));
+        .then(allRecipes => dispatch({ type: actions.RECIPES_GET_ALL, payload: allRecipes }));
     };
   };
 }
 
-export const getRecipes = makeGetRecipes(api);
+export const getAllRecipes = makeGetAllRecipes(api);
+
+
+// DELETE
 
 export function makeDeleteRecipe(api) {
   return function deleteRecipe(id) {
@@ -36,6 +43,8 @@ export function makeDeleteRecipe(api) {
 }
 
 export const deleteRecipe = makeDeleteRecipe(api);
+
+// GET BY ID
 
 export function makeGetRecipeById(api) {
   return function getRecipe(id) {

@@ -10,19 +10,15 @@ class RecipeDetails extends Component {
 
   remove(id) {
     this.props.deleteRecipe(id);
-      // .then(removed => {
-      //   console.log(removed);
-      // });
   }
 
   render() {
-    const recipe = this.props.recipe;
-    console.log(recipe);
+    const { selected } = this.props.recipes;
+    const recipe = selected;
   
     return (
       <div id="recipe-details">
         <h1>{recipe.title}</h1>
-        {/* <button className="right-button" onClick={() => { alert('this does nothing'); }}>Edit</button> */}
         <button className="right-button" onClick={() => this.remove(recipe._id) }>Delete</button>
   
         {recipe.servings ? <p>Serves: {recipe.servings}</p> : null }
@@ -90,5 +86,6 @@ function convertToFraction(amount) {
 //   console.log(this.state.ingredients, scaledIngredients);
 // }
 
-
-export default connect(null, { deleteRecipe })(RecipeDetails);
+export default connect(state => {
+  return { recipes: state.recipes };
+}, { deleteRecipe })(RecipeDetails);
