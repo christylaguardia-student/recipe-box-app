@@ -1,6 +1,6 @@
 import * as actions from './recipe.constants';
 
-export default function recipes(state = { all: [], selected: {} }, { type, payload }) {
+export function recipes(state = { all: [], selected: {} }, { type, payload }) {
   switch(type) {
     case actions.RECIPES_GET_ALL:
       return {
@@ -21,7 +21,7 @@ export default function recipes(state = { all: [], selected: {} }, { type, paylo
       };
     
     case actions.RECIPE_REMOVED: {
-      const index = state.findIndex(x => x === payload); // why does this work? state.all?
+      const index = state.all.findIndex(x => x === payload); // why does this work? state.all?
 
       if (index === -1) return state;
 

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import '../styles/App.css';
 import Home from '../components/Home';
 import About from '../components/About';
+import Auth from '../auth/Auth';
 import CreateRecipe from '../components/CreateRecipe';
 import RecipeContainer from './RecipeContainer';
 
@@ -18,7 +19,7 @@ class App extends Component {
               <li><Link to="/about">About</Link></li>
               <li><Link to="/recipes">Recipes</Link></li>
               <li><Link to="/new">New</Link></li>
-              <li className="right-nav"><Link to="/login">Login</Link></li>
+              <li className="right-nav"><Link to="/auth/login">Login</Link></li>
             </ul>
           </div>
           <div>
@@ -27,6 +28,7 @@ class App extends Component {
               <Route exact path="/about" component={About} />
               <Route path="/recipes" component={RecipeContainer} />
               <Route path="/new" component={CreateRecipe} />
+              <Route path="/auth" component={Auth} />
             </Switch>
           </div>
         </div>

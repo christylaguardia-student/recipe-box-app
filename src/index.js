@@ -7,10 +7,11 @@ import thunk from 'redux-thunk';
 import './styles/index.css';
 import AppContainer from './containers/AppContainer';
 import registerServiceWorker from './registerServiceWorker';
-import recipeReducers from './store/recipe.reducer';
+import { recipes } from './store/recipe.reducer';
+import { user } from './auth/reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const rootReducer = combineReducers({ recipes: recipeReducers });
+const rootReducer = combineReducers({ recipes, user });
 
 const store = createStore(
   rootReducer,

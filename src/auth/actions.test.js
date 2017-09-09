@@ -3,7 +3,7 @@ import { makeSignup } from './actions';
 
 describe('user actions', () => {
 
-  it.skip('signup a user', () => {
+  it('signup a user', () => {
     const api = {
       signup(user) { return Promise.resolve(user); }
     };
@@ -15,7 +15,7 @@ describe('user actions', () => {
     const dispatchFn = savedUser(user);
 
     dispatchFn(dispatch)
-      .then(() => {
+      .then(token => {
         expect(dispatched).toEqual([
           { type: actions.GOT_TOKEN, payload: token },
           { type: actions.FETCHED_USER, payload: user }
