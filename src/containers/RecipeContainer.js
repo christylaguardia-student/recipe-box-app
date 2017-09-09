@@ -18,13 +18,10 @@ class RecipeContainer extends Component {
 
   componentDidUpdate() {
     const selectedId = this.props.location.pathname.split('/recipes/')[1];
-    console.log('selectedId', selectedId);
-    console.log('this.props',this.props);    
 
     if (this.props.recipes.selected._id !== selectedId) {
       this.props.getRecipe(selectedId);
     }
-
   }
 
   render() {

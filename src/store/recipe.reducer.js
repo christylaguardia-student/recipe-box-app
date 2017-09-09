@@ -1,6 +1,6 @@
 import * as actions from './recipe.constants';
 
-export default function recipes(state = { selected: { name: 'my recipe' }, all: [] }, { type, payload }) {
+export default function recipes(state = { all: [], selected: {} }, { type, payload }) {
   switch(type) {
     case actions.RECIPES_GET_ALL:
       return {
@@ -10,23 +10,25 @@ export default function recipes(state = { selected: { name: 'my recipe' }, all: 
     
     case actions.RECIPE_GET:
       return {
-        all: [...state.all],
-        selected: Object.assign({}, payload)
+        all: state.all,
+        selected: payload
       };
     
     case actions.RECIPE_ADDED:
       return {
-        all: [...state, payload],
+        all: [...state.all, payload],
         selected: state.selected
       };
     
     case actions.RECIPE_REMOVED: {
-      const index = state.findIndex(x => x === payload);
+      const index = state.findIndex(x => x === payload); // why does this work? state.all?
+
       if (index === -1) return state;
+
       return {
         all: [
-          ...state.slice(0, index),
-          ...state.slice(index + 1)
+          ...state.all.slice(0, index),
+          ...state.all.slice(index + 1)
         ],
         selected: state.selected
       };
