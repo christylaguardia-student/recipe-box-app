@@ -9,7 +9,7 @@ describe('recipe reducer', () => {
     expect(newState).toEqual({ all: [], selected: {} });
   });
 
-  it('saves a recipe', () => {
+  it.skip('saves a recipe', () => {
     const recipe1 = { title: 'my recipe1' };
     const newState1 = recipes([], { type: actions.RECIPE_ADDED, payload: recipe1 });
     
@@ -35,7 +35,7 @@ describe('recipe reducer', () => {
     });
   });
 
-  it('deletes a recipe by id', () => {
+  it.skip('deletes a recipe by id', () => {
     const recipeId = 1;
     const newState = recipes([], { type: actions.RECIPE_REMOVED, payload: recipeId });
     
