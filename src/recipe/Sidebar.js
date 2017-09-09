@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import '../styles/Sidebar.css';
-import { getRecipe } from '../store/recipe.actions'; 
+import { getRecipe } from './actions'; 
 
 class SideBar extends Component {
 

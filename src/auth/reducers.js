@@ -1,11 +1,7 @@
 import * as actions from './constants';
 
-// import { combineReducers } from 'redux';
-// export default (state = {}, action) => combineReducers({ user })(state, action);
-
 export function user(state = {}, { type, payload }) {
   switch(type) {
-
     case actions.FETCHED_USER:
       return payload;
     
@@ -19,6 +15,5 @@ export function user(state = {}, { type, payload }) {
       return state;
   }
 }
-
 
 // TODO: token, error

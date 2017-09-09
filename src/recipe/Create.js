@@ -5,8 +5,8 @@ import ReactQuill from 'react-quill';
 import theme from 'react-quill/dist/quill.snow.css';
 import '../styles/quill.css';
 
-import { units } from '../store/ingredient.constants.js';
-import { saveRecipe } from '../store/recipe.actions';
+import { units } from '../ingredients/constants.js';
+import { saveRecipe } from './actions';
 import Sidebar from './Sidebar';
 import '../styles/form.css';
 

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactQuill from 'react-quill';
 
-import { fractions } from '../store/ingredient.constants.js';
-import { deleteRecipe } from '../store/recipe.actions';
+import { fractions } from '../ingredients/constants.js';
+import { deleteRecipe } from './actions';
 import '../styles/RecipeDetails.css';
 
 class RecipeDetails extends Component {

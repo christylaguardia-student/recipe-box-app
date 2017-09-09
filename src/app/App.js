@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import '../styles/App.css';
-import Home from '../components/Home';
-import About from '../components/About';
 import Auth from '../auth/Auth';
-import CreateRecipe from '../components/CreateRecipe';
-import RecipeContainer from './RecipeContainer';
+import Home from './Home';
+import About from './About';
+import RecipeContainer from '../recipe/Container';
+import CreateRecipe from '../recipe/Create';
 
 class App extends Component {
 

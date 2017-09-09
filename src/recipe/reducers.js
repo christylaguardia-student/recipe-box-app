@@ -1,4 +1,4 @@
-import * as actions from './recipe.constants';
+import * as actions from './constants';
 
 export function recipes(state = { all: [], selected: {} }, { type, payload }) {
   switch(type) {

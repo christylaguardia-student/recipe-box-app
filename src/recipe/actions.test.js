@@ -1,10 +1,10 @@
-import * as actions from './recipe.constants';
+import * as actions from './constants';
 import {
   makeSaveRecipe,
   makeGetAllRecipes,
   makeDeleteRecipe,
   makeGetRecipeById
-} from './recipe.actions';
+} from './actions';
 
 describe('recipe actions', () => {
 

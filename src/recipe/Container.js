@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getRecipe, getAllRecipes } from '../store/recipe.actions'; 
-import Sidebar from '../components/Sidebar';
-import RecipeDetails from '../components/RecipeDetails';
+import { getRecipe, getAllRecipes } from './actions'; 
+import Sidebar from './Sidebar';
+import RecipeDetails from './Details';
 
 function NoRecipe() {
   return (
@@ -30,6 +30,7 @@ class RecipeContainer extends Component {
         <div className="left-side">
           <Sidebar />
         </div>
+        {/* TODO: create routes for view, edit, add, etc. */}
         <div className="right-side">
           {this.props.recipes.selected._id ? <RecipeDetails /> : <NoRecipe /> }
         </div>

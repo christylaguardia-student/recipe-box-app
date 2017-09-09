@@ -1,4 +1,4 @@
-import * as actions from './recipe.constants';
+import * as actions from './constants';
 import api from '../services/recipe-box.api';
 
 // SAVE
