@@ -27,7 +27,7 @@ export default class Home extends Component {
         <div id="home">
           <h1 className="jumbo-text">Recipe Box</h1>
           <h2>Save your recipes. Get cooking.</h2>
-          <Link className="jumbo-link" to="/auth/signup">Sign Up</Link>
+          <Link className="jumbo-link" to="/signup">Sign Up</Link>
         </div>
       </div>
     );

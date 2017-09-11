@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 
 import ReactQuill from 'react-quill';
-import theme from 'react-quill/dist/quill.snow.css';
+import 'react-quill/dist/quill.snow.css';
 import '../styles/quill.css';
 
 import { units } from '../ingredients/constants.js';

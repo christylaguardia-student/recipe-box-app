@@ -1,29 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Login({ onSubmit }) {
+export default function Login({ handleOnSubmit }) {
   return (
-    <div className="centered-container">
-      <form onSubmit = {e => {
-        console.log('submitting login form...');
-        e.preventDefault();
-        const { elements } = e.target;
-        const data = Object.keys(elements).reduce((obj, key) => {
-          obj[key] = elements[key].value;
-          return obj;
-        }, {});
-        onSubmit(data);
+    <form
+      className="centered-form"
+      onSubmit={event => {
+        event.preventDefault();
+        const form = event.target;
+        const { email, password } = form.elements;
+        const data = {
+          email: email.value,
+          password: password.value
+        };
+        handleOnSubmit(data);
+        form.reset();
       }}>
-        <h1>Signin to your Recipe Box.</h1>
-        <h3>Not already a member? <Link to="/auth/signup">Signup here.</Link></h3>
-        <label>Email</label>
-        <input name="email" type="email" required />
-        
-        <label>Password</label>
-        <input name="password" type="password" required />
-
-        <button type="submit">Login</button>
-      </form>
-    </div>
+  
+      <h1>Login to your Recipe Box.</h1>
+      <h3>Not already a member? <Link to="/signup">Signup here.</Link></h3>
+      <label>Email: <input name="email" type="email" required /></label>
+      <label>Password: <input name="password" type="password" required /></label>
+      <button type="submit">Login</button>
+    </form>
   );
 }

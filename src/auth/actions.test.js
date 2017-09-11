@@ -1,18 +1,23 @@
 import * as actions from './constants';
-import { makeSignup } from './actions';
+import { signup as signupAction,
 
-describe('user actions', () => {
+} from './actions';
+
+describe.only('user actions', () => {
 
   it('signup a user', () => {
+    const user = { firstName: 'Charlie', lastName: 'Dog', email: 'woof@bark.com', password: 'ilove2eat' };
+
     const api = {
       signup(user) { return Promise.resolve(user); }
     };
-    const user = { firstName: 'Charlie', lastName: 'Dog', email: 'woof@bark.com', password: 'ilove2eat' };
 
     const dispatched = [];
     const dispatch = (action) => { dispatched.push(action); };
-    const savedUser = makeSignup(api);
+    const savedUser = signupAction(api);
+    console.log('savedUser', savedUser);
     const dispatchFn = savedUser(user);
+    console.log('dispatchFn', dispatchFn);
 
     dispatchFn(dispatch)
       .then(token => {

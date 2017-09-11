@@ -1,5 +1,5 @@
 import * as actions from './constants';
-import api from '../services/recipe-box.api';
+import api from '../services/recipe-api';
 
 // SAVE
 

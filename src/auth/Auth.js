@@ -1,14 +1,21 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { signup } from './actions';
+import { signup, signin } from './actions';
 import Signup from './Signup';
 import Login from './Login';
 
 export default function Auth() {
   return (
     <Switch>
-      <Route path="/auth/signup" component={() => <Signup submit={signup} /> } />
-      <Route path="/auth/login" component={Login} />
+      
+      <Route path="/signup" component={() => (
+        <Signup handleOnSubmit={signup} />
+      )} />
+
+      <Route path="/login" component={() => (
+        <Login handleOnSubmit={signin} />
+      )} />
+
     </Switch>
   );
 }

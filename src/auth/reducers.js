@@ -1,19 +1,41 @@
 import * as actions from './constants';
+import { combineReducers } from 'redux';
 
-export function user(state = {}, { type, payload }) {
+export default (state = {}, action) => combineReducers({ user, token, error })(state, action);
+
+export function user(state = null, { type, payload }) {
   switch(type) {
     case actions.FETCHED_USER:
       return payload;
-    
     case actions.LOGOUT:
-      return null;
-    
     case actions.AUTH_FAILED:
       return null;
-
     default:
       return state;
   }
 }
 
-// TODO: token, error
+export function token(state = null, { type, payload }) {
+  switch(type) {
+    case actions.GOT_TOKEN:
+      return payload;
+    case actions.LOGOUT:
+    case actions.AUTH_FAILED:
+      return null;
+    default:
+      return state;
+  }
+}
+
+export function error(state = null, { type, payload }) {
+  switch(type) {
+    case actions.AUTH_FAILED:
+      return payload;
+    case actions.LOGOUT:
+    case actions.GOT_TOKEN:
+    case actions.FETCHED_USER:
+      return null;
+    default:
+      return state;
+  }
+}
