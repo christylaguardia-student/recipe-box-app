@@ -1,0 +1,32 @@
+@import "_colors";
+
+#side-nav {
+  min-height: calc(100vh - 50px);
+  background-color: $white;
+  padding: .5rem;
+  border-right: 1px solid $dark;
+  margin-top: -1px;
+}
+
+#side-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+#side-nav li a {
+  display: block;
+  color: $black;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+#side-nav li a.active {
+  background-color: $dark;
+}
+
+#side-nav li a:hover:not(.active) {
+  background-color: $highlight;
+  color: $white;
+}

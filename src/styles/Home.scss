@@ -1,0 +1,58 @@
+@import "_colors";
+@import "_images";
+
+#home-container {
+  height: calc(100vh - 50px);
+  background-image: url($home-background);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#home {
+  border-radius: 10px;
+  margin: auto;
+  position: absolute;
+  padding: 2rem;
+  text-align: center;
+  vertical-align: middle;
+  background-color: $white;
+  opacity: .7;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.jumbo-text {
+  display: block;
+  font-size: 3rem;
+  text-align: center;
+  padding: 1rem;
+  color: $highlight;
+}
+
+.jumbo-text, #home h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.jumbo-link {
+  padding: .5rem 1rem;
+  vertical-align: middle;
+  font-size: 1.5rem;
+  text-decoration: none;
+  border: 1px solid $black;
+  border-radius: 5px;
+}
+
+.jumbo-link {
+  background-color: $black;
+  color: $white;
+  display: inline-block;
+  margin: 1rem;  
+}
+
+.jumbo-link:hover {
+  background-color: $highlight;
+  color: $black;
+}
