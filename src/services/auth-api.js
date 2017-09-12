@@ -10,7 +10,6 @@ export default {
     return request.post(`${AUTH_URL}/signin`, credentials);
   },
   signup(user) {
-    console.log('auth api signup', user);
     return request.post(`${AUTH_URL}/signup`, user);
   },
   getUser() {
