@@ -5,7 +5,7 @@ export const API_URL = '/api';
 let token = '';
 
 store.subscribe(() => {
-  const { token: newToken } = store.getState().user;
+  const { token: newToken } = store.getState().auth;
 
   if (newToken !== token) {
     token = newToken;

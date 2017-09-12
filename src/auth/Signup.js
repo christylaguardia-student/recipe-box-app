@@ -14,7 +14,6 @@ export default ({ handleOnSubmit }) => (
         email: email.value,
         password: password.value
       };
-      console.log('form data', data);
       handleOnSubmit(data);
       form.reset();
     }}>
