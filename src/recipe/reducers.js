@@ -5,21 +5,22 @@ export function recipes(state = { all: [], selected: {} }, { type, payload }) {
     case actions.RECIPES_GET_ALL:
       return {
         all: payload,
-        selected: state.selected
+        selected: Object.assign({}, state.selected)
       };
     
     case actions.RECIPE_GET:
       return {
-        all: state.all,
+        all: [...state], // does this work?
         selected: payload
       };
     
-    case actions.RECIPE_ADDED:
+    case actions.RECIPE_ADDED: {
       return {
-        all: [...state.all, payload],
-        selected: state.selected
+        all: [...state, payload], // does this work?
+        selected: Object.assign({}, state.selected)
       };
-    
+    }
+
     case actions.RECIPE_REMOVED: {
       const index = state.all.findIndex(x => x === payload); // why does this work? state.all?
 
@@ -30,7 +31,7 @@ export function recipes(state = { all: [], selected: {} }, { type, payload }) {
           ...state.all.slice(0, index),
           ...state.all.slice(index + 1)
         ],
-        selected: state.selected
+        selected: Object.assign({}, state.selected)
       };
     }
     
