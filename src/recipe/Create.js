@@ -72,6 +72,7 @@ class CreateRecipe extends Component {
   saveRecipe() {
     // create object to save
     const recipe = {
+      userId: this.props.auth.user._id,
       title: this.state.title,
       servings: parseInt(this.state.servings, 10),
       time: parseInt(this.state.time, 10),

@@ -8,25 +8,25 @@ import Login from './Login';
 export function Auth({ user, signup, signin, error }) {
 
   return (
-    <Switch>
+    <div className="centered-container">
       {error ? <Error /> : null}
-
-      <Route path="/signup" component={() => (
-        <Signup handleOnSubmit={signup} />
-      )} />
-
-      <Route path="/login" component={() => (
-        <Login handleOnSubmit={signin} />
-      )} />
-
-    </Switch>
+      <Switch>
+        <Route path="/signup" component={() => (
+          <Signup handleOnSubmit={signup} />
+        )} />
+        <Route path="/login" component={() => (
+          <Login handleOnSubmit={signin} />
+        )} />
+      </Switch>
+    </div>
   );
 }
 
 function Error() {
   return (
     <div className="error">
-      <h3>Authorization failed.</h3>
+      <h3>Whoops! That didn't work.</h3>
+      <h3>Give it another try.</h3>
     </div>
   );
 }

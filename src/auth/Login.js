@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Login({ handleOnSubmit }) {
   return (
     <form
-      className="centered-form"
+      className="centered"
       onSubmit={event => {
         event.preventDefault();
         const form = event.target;

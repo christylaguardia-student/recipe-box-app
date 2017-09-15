@@ -10,8 +10,7 @@ describe('user actions', () => {
   };
   
   const user = {
-    firstName: 'Charlie',
-    lastName: 'Dog',
+    username: 'Charlie The Dog',
     email: 'woof@bark.com',
     password: 'ilove2eat'
   };
