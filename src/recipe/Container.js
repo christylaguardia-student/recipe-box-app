@@ -40,9 +40,20 @@ class RecipeContainer extends Component {
     
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getRecipe: (id) => {
+      dispatch(getRecipe(id));
+    },
+    getAllRecipes: () => {
+      dispatch(getAllRecipes());
+    }
+  };
+};
+
 export default connect(state => {
   return {
     recipes: state.recipes,
     recipe: state.recipe
   };
-}, { getRecipe, getAllRecipes })(RecipeContainer);
+}, mapDispatchToProps)(RecipeContainer);

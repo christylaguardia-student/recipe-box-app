@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import '../styles/Sidebar.css';
-import { getRecipe } from './actions'; 
 
 class SideBar extends Component {
 
@@ -26,6 +25,11 @@ class SideBar extends Component {
   }
 }
 
-export default connect(state => {
-  return { recipes: state.recipes };
-}, { getRecipe })(SideBar);
+const mapStateToProps = (state) => {
+  return {
+    recipes: state.recipes,
+    username: state.auth.user.username
+  };
+};
+
+export default connect(mapStateToProps, null)(SideBar);

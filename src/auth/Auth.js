@@ -10,6 +10,7 @@ export function Auth({ user, signup, signin, error }) {
   return (
     <div className="centered-container">
       {error ? <Error /> : null}
+      {user ? <div>hello {user.username}</div>: <div>signup or in</div>}
       <Switch>
         <Route path="/signup" component={() => (
           <Signup handleOnSubmit={signup} />

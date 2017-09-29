@@ -5,16 +5,49 @@ import Routes from './Routes';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      ready: true
+    };
+  }
+
+  componentDidMount() {
+    this.props
+      .checkForToken();
+      // .then(() => this.setState({ ready: true }));
+  }
+
   render() {
-    return <Routes />;
+    return (
+      <div>
+        {this.state.ready && <Routes />}
+        <Footer />
+      </div>
+    );
   }
 }
 
-// TODO: footer
+function Footer(props) {
+  return (
+    <footer>
+      Christy La Guardia &copy; 2017
+    </footer>
+  );
+}
 
-export default connect(
-  state => ({ user: state.user }),
-  dispatch => ({ 
-    checkForToken() { return dispatch(checkForToken()); }  
-  })
-)(App);
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    checkForToken: () => {
+      dispatch(checkForToken());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -225,4 +225,12 @@ const quillModules = {
   ]
 };
 
-export default connect(null, { saveRecipe })(CreateRecipe);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    saveRecipe: (recipe) => {
+      dispatch(saveRecipe(recipe));
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CreateRecipe);

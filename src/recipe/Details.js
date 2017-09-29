@@ -86,6 +86,18 @@ function convertToFraction(amount) {
 //   console.log(this.state.ingredients, scaledIngredients);
 // }
 
-export default connect(state => {
-  return { recipes: state.recipes };
-}, { deleteRecipe })(RecipeDetails);
+const mapStateToProps = (state) => {
+  return {
+    recipes: state.recipes
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteRecipe: (id) => {
+      dispatch(deleteRecipe(id));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeDetails);

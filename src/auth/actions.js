@@ -1,10 +1,9 @@
 import * as actions from './constants';
-import { getStoredToken } from '../services/request';
 import authApi from '../services/auth-api';
 
 export function checkForToken() {
   return dispatch => {
-    const token = getStoredToken();
+    const token = localStorage.getItem('RECIPE_BOX');
     
     if (!token) return;
     dispatch ({ type: actions.GOT_TOKEN, payload: token });

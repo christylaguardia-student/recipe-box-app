@@ -10,7 +10,7 @@ import CreateRecipe from '../recipe/Create';
 import '../styles/App.css';
 
 
-export function Nav({ user, signout }) {
+export function Routes({ user, signout }) {
   return (
     <Router>
       <div id="main">
@@ -36,13 +36,15 @@ export function Nav({ user, signout }) {
 
 function LoggedInOptions({ logout }) {
   return (
-    <ul>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/about">About</Link></li>
-      <li><Link to="/recipes">Recipes</Link></li>
-      <li><Link to="/new">New</Link></li>
-      <li className="right-nav"><Link to="/" onClick={logout}>Logout</Link></li>
-    </ul>
+    <div>
+      <p>Welcome {this.props.user.username}!</p>
+      <ul>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/recipes">Recipes</Link></li>
+        <li><Link to="/new">New</Link></li>
+        <li className="right-nav"><Link to="/" onClick={logout}>Logout</Link></li>
+      </ul>
+    </div>
   );
 }
 
@@ -56,9 +58,18 @@ function LoggedOutOptions() {
   );
 }
 
-export default connect(
-  state => ({ user: state.auth.user }),
-  dispatch => ({
-    signout() { dispatch(signout()); }
-  })
-)(Nav);
+const mapStateToProps = (state) => {
+  return {
+    username: state.auth.user
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signout: () => {
+      dispatch(signout());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Routes);

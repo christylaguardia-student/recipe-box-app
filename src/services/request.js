@@ -9,7 +9,7 @@ store.subscribe(() => {
 
   if (newToken !== token) {
     token = newToken;
-    token ? localStorage.token = token : localStorage.clear('token');
+    token ? localStorage.RECIPE_BOX = token : localStorage.clear('RECIPE_BOX');
   }
 });
 
@@ -22,8 +22,6 @@ const wrapper = cmd => cmd
       throw error;
     }
   );
-
-export const getStoredToken = () => localStorage.token; 
 
 export const request =  {
   get(url) {
