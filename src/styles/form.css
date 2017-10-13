@@ -11,7 +11,7 @@ input, textarea, select, button {
   background-color: #fdfcfa;
   padding: .5rem; }
 
-input, select, button {
+select, button {
   text-align: center; }
 
 select {
@@ -19,17 +19,17 @@ select {
   height: 36px; }
 
 input[type="text"] {
-  width: 300px; }
+  min-width: 300px; }
 
 input[type="number"] {
-  width: 60px; }
+  min-width: 40px; }
 
 input:focus {
   outline: none; }
 
 textarea {
-  height: 300px;
-  width: 600px; }
+  min-height: 300px;
+  max-width: 600px; }
 
 table > input {
   margin: 0; }
