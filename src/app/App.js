@@ -5,23 +5,14 @@ import Routes from './Routes';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      ready: true
-    };
-  }
-
-  componentDidMount() {
-    this.props
-      .checkForToken();
-      // .then(() => this.setState({ ready: true }));
+  componentWillMount() {
+    this.props.checkForToken();
   }
 
   render() {
     return (
       <div>
-        {this.state.ready && <Routes />}
+        <Routes user={this.props.user} />
         <Footer />
       </div>
     );
@@ -31,7 +22,7 @@ class App extends Component {
 function Footer(props) {
   return (
     <footer>
-      Christy La Guardia &copy; 2017
+      <a rel="noopener noreferrer" href="http://www.laguardia.io" target="_blank">Christy La Guardia</a> &copy; 2017
     </footer>
   );
 }
