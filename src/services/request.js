@@ -1,20 +1,22 @@
 import superagent from 'superagent';
 import store from '../store/index';
 
-export const API_URL = '/api';
-let token = '';
+const API_URL = '/api';
+let currentToken = '';
 
 store.subscribe(() => {
+  console.log('getting token from current state');
   const { token: newToken } = store.getState().auth;
 
-  if (newToken !== token) {
-    token = newToken;
-    token ? localStorage.RECIPE_BOX = token : localStorage.clear('RECIPE_BOX');
+  if (newToken !== currentToken) {
+    currentToken = newToken;
+    if (newToken) localStorage.setItem('RECIPE_BOX_TOKEN', newToken);
+    else localStorage.clear('RECIPE_BOX_TOKEN');
   }
 });
 
 const wrapper = cmd => cmd
-  .set('Authorization', token)
+  .set('Authorization', currentToken)
   .then(res => res.body,
     ({ response }) => {
       const { body, text } = response;

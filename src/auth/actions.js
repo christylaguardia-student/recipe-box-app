@@ -3,15 +3,27 @@ import authApi from '../services/auth-api';
 
 export function checkForToken() {
   return dispatch => {
-    const token = localStorage.getItem('RECIPE_BOX');
+    console.log('checking for token...');
+    const token = localStorage.getItem('RECIPE_BOX_TOKEN');
+
+    if (!token) {
+      console.log('no token found');
+      return;
+    } else {
+      (console.log('got token'));
+      dispatch ({ type: actions.GOT_TOKEN, payload: token });
     
-    if (!token) return;
-    dispatch ({ type: actions.GOT_TOKEN, payload: token });
-    
-    return authApi.verify()
-      .then(() => authApi.getUser())
-      .then(user => dispatch({ type: actions.FETCHED_USER, payload: user }))
-      .catch(error => dispatch({ type: actions.AUTH_FAILED, payload: error }));
+      authApi.verify()
+        .then(() => authApi.getUser())
+        .then(user => {
+          console.log('verify successful, fetched user');
+          dispatch({ type: actions.FETCHED_USER, payload: user });
+        })
+        .catch(error => {
+          console.log('check for token error');
+          dispatch({ type: actions.AUTH_FAILED, payload: error });
+        });
+    }
   };
 }
 
@@ -20,8 +32,14 @@ export function signup(user) {
     authApi.signup(user)
       .then(({ token }) => dispatch({ type: actions.GOT_TOKEN, payload: token }))
       .then(() => authApi.getUser())
-      .then(user => dispatch({ type: actions.FETCHED_USER, payload: user }))
-      .catch(error => dispatch({ type: actions.AUTH_FAILED, payload: error }));
+      .then(user => {
+        console.log('signup successful');
+        dispatch({ type: actions.FETCHED_USER, payload: user });
+      })
+      .catch(error => {
+        console.log('signup error');
+        dispatch({ type: actions.AUTH_FAILED, payload: error });
+      });
   };
 }
 

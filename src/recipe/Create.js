@@ -29,7 +29,7 @@ class CreateRecipe extends Component {
     };
 
     this.addIngredient = this.addIngredient.bind(this);
-    this.saveRecipe = this.saveRecipe.bind(this);
+    this.save = this.save.bind(this);
     this.handleQuillChange = this.handleQuillChange.bind(this);
   }
 
@@ -69,10 +69,10 @@ class CreateRecipe extends Component {
     this.ingredientUnitRef.value = 'none';
   }
 
-  saveRecipe() {
+  save() {
     // create object to save
     const recipe = {
-      userId: this.props.auth.user._id,
+      userId: this.props.userId,
       title: this.state.title,
       servings: parseInt(this.state.servings, 10),
       time: parseInt(this.state.time, 10),
@@ -83,7 +83,7 @@ class CreateRecipe extends Component {
     // check if required fields are populated
     if (recipe.title !== '' || recipe.instructions !== '' || recipe.ingredients.length > 0 ) {
       // save the recipe
-      this.props.saveRecipe(recipe)
+      this.props.saveNewRecipe(recipe)
         .then(saved => this.setState({
           recipeSaveError: false,
           recipeSaved: true
@@ -161,7 +161,7 @@ class CreateRecipe extends Component {
                     <input ref={(el) => this.ingredientAmountRef = el} name="amount" type="number" step="1" min="0" placeholder="1" onChange={({target}) => this.setState({ amount: target.value })} />
                   </td>
                   <td>
-                    <select  ref={(el) => this.ingredientUnitRef = el} name="unit" onChange={({target}) => this.setState({ unit: target.value })} >
+                    <select ref={(el) => this.ingredientUnitRef = el} name="unit" onChange={({target}) => this.setState({ unit: target.value })} >
                       <option>none</option>
                       { units.map((unit, index) => <option key={index}>{unit}</option>) }
                     </select>
@@ -225,12 +225,18 @@ const quillModules = {
   ]
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = state => {
   return {
-    saveRecipe: (recipe) => {
+    userId: state.auth.user._id
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    saveNewRecipe: recipe => {
       dispatch(saveRecipe(recipe));
     }
   };
 };
 
-export default connect(null, mapDispatchToProps)(CreateRecipe);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateRecipe);
