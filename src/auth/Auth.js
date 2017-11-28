@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signup, signin } from './actions';
 import Signup from './Signup';
@@ -10,7 +10,7 @@ export function Auth({ user, signup, signin, error }) {
   return (
     <div className="centered-container">
       {error ? <Error /> : null}
-      {user ? <div>hello {user.username}</div>: <div>signup or in</div>}
+      {user ? <div>Signed In as {user.email}</div>: <div><Link to="/signup">Signup</Link></div>}
       <Switch>
         <Route path="/signup" component={() => (
           <Signup handleOnSubmit={signup} />

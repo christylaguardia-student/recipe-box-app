@@ -26,10 +26,7 @@ class SideBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    recipes: state.recipes,
-    username: state.auth.user.username
-  };
+  return { recipes: state.recipes };
 };
 
 export default connect(mapStateToProps, null)(SideBar);

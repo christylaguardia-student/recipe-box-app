@@ -10,13 +10,13 @@ import CreateRecipe from '../recipe/Create';
 import '../styles/App.css';
 
 
-export function Routes({ user, signout }) {
+export function Routes({ currentUser }) {
   return (
     <Router>
       <div id="main">
         <div id="top-nav">
           {
-            user
+            currentUser
               ? <LoggedInOptions logout={signout}/>
               : <LoggedOutOptions />
           }
@@ -37,8 +37,8 @@ export function Routes({ user, signout }) {
 function LoggedInOptions({ logout }) {
   return (
     <div>
-      <p>Welcome {this.props.user.username}!</p>
       <ul>
+        <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/recipes">Recipes</Link></li>
         <li><Link to="/new">New</Link></li>
@@ -60,7 +60,7 @@ function LoggedOutOptions() {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.auth.user
+    currentUser: state.auth.user
   };
 };
 
