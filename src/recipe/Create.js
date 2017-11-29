@@ -123,13 +123,22 @@ class CreateRecipe extends Component {
           
           <form ref={(el) => this.recipeFormRef = el}>
             <label>Recipe Title*</label>
-            <input name="title" type="text" placeholder="Recipe Title" onChange={({target}) => this.setState({ title: target.value })} />
+            <input name="title"
+              type="text" placeholder="Recipe Title"
+              onChange={({target}) => this.setState({ title: target.value })}
+            />
             
             <label>Servings</label>
-            <input name="servings" type="number" step="1" min="1" placeholder="4" onChange={({target}) => this.setState({ servings: target.value })} />
+            <input name="servings"
+              type="number" step="1" min="1" placeholder="4"
+              onChange={({target}) => this.setState({ servings: target.value })}
+            />
             
             <label>Time (minutes)</label>
-            <input name="time" type="number" step="5" min="1" placeholder="30" onChange={({target}) => this.setState({ time: target.value })} />
+            <input name="time"
+              type="number" step="5" min="1" placeholder="30"
+              onChange={({target}) => this.setState({ time: target.value })}
+            />
           </form>
 
           <div>

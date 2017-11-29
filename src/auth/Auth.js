@@ -10,7 +10,7 @@ export function Auth({ user, signup, signin, error }) {
   return (
     <div className="centered-container">
       {error ? <Error /> : null}
-      {user ? <div>Signed In as {user.email}</div>: <div><Link to="/signup">Signup</Link></div>}
+      {user ? <div>You are signed in as {user.email}</div>: <div><Link to="/signup">Signup</Link></div>}
       <Switch>
         <Route path="/signup" component={() => (
           <Signup handleOnSubmit={signup} />
@@ -18,6 +18,9 @@ export function Auth({ user, signup, signin, error }) {
         <Route path="/login" component={() => (
           <Login handleOnSubmit={signin} />
         )} />
+
+        {/* TODO: redirect if logged in to /recipes, if not logged in to signup */}
+        
       </Switch>
     </div>
   );
